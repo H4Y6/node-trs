@@ -17,6 +17,7 @@
 //     console.log(error);
 //   });
 //------------------------------------
+
 const fs = require("fs/promises");
 const fileOperation = async ({ filePath, action, data }) => {
   switch (action) {
@@ -37,13 +38,13 @@ const fileOperation = async ({ filePath, action, data }) => {
 };
 
 // fileOperation({ filePath: "./files/file.txt", action: "read" });
-fileOperation({
-  filePath: "./files/file.txt",
-  action: "add",
-  data: "\nHave a nice day!",
-});
 // fileOperation({
 //   filePath: "./files/file.txt",
-//   action: "replace",
-//   data: "Good day!",
+//   action: "add",
+//   data: "\nHave a nice day!",
 // });
+fileOperation({
+  filePath: "./files/file.txt",
+  action: "replace",
+  data: "Good day!",
+});
