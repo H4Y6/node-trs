@@ -36,8 +36,6 @@ const invokeAction = async ({ action, id, title, author }) => {
 // });
 // invokeAction({ action: "deleteById", id: "pJ2k3SY7LanxXNdZ-7pjf" });
 
-// console.log(process.argv);
-
 // const actionIdx = process.argv.indexOf("--action");
 // if (actionIdx !== -1) {
 //   action = process.argv[actionIdx + 1];
@@ -48,6 +46,12 @@ const invokeAction = async ({ action, id, title, author }) => {
 
 const actionIdx = process.argv.indexOf("--action");
 if (actionIdx !== -1) {
+  // console.log(process.argv);
   const action = process.argv[actionIdx + 1];
+  const idIdx = process.argv.indexOf("--id");
+  if (idIdx !== -1) {
+    const id = process.argv[idIdx + 1];
+    invokeAction({ action, id });
+  }
   invokeAction({ action });
 }
