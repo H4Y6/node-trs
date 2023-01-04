@@ -1,8 +1,11 @@
 const users = require("./users");
-console.log(users);
+console.log("Users:", users);
 
 // const { admins } = require("./users");
 // console.log(admins);
+
+const { admins } = users;
+console.log(`Admins: ${admins}`);
 
 const { getCurrentTime } = require("./date");
 const currentTime = getCurrentTime();
