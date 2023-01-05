@@ -49,9 +49,9 @@ if (actionIdx !== -1) {
   // console.log(process.argv);
   const action = process.argv[actionIdx + 1];
   const idIdx = process.argv.indexOf("--id");
-  if (idIdx !== -1) {
-    const id = process.argv[idIdx + 1];
-    invokeAction({ action, id });
+  if (idIdx === -1) {
+    invokeAction({ action });
   }
-  invokeAction({ action });
+  const id = process.argv[idIdx + 1];
+  invokeAction({ action, id });
 }
