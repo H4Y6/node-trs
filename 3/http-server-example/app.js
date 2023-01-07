@@ -19,7 +19,7 @@ const server = http.createServer((request, response) => {
 //     // console.log(request.headers["user-agent"]);
 //     // console.log(request.method);
 
-//     response.write("<h2>Добро пожаловать на наш сайт!</h2>");
+//     response.write("<h2>Welcome!</h2>");
 //     response.end();
 // });
 
