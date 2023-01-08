@@ -11,5 +11,5 @@ app.get("/con*tact", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Listnening on port: 3000.");
+  console.log("Listnening to port: 3000.");
 });
