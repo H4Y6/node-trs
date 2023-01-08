@@ -1,9 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const fs = require("fs/promises");
 const moment = require("moment");
 const app = express();
 
 const books = require("./books");
+
+app.use(cors());
 
 app.use(async (req, res, next) => {
   const { method, url } = req;
