@@ -6,7 +6,7 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello, world!</h1>");
 });
 
-app.get("/con*tact", (req, res) => {
+app.get("/con*tacts", (req, res) => {
   res.send("<h1>Contact page</h1>");
 });
 
