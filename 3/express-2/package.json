@@ -1,5 +1,5 @@
 {
-  "name": "express-example-3",
+  "name": "express-2",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "moment": "^2.29.3"
   }
 }
