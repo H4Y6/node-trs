@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs/promises");
-const booksRouter = require("./data/books");
+const booksRouter = require("./routes/api/books");
 const app = express();
 
 app.use(cors());
@@ -14,6 +14,10 @@ app.use(async (req, res, next) => {
 
 app.use("/api/books", booksRouter);
 
+app.use((req, res) => {
+  res.status(404).json({ message: "Not found" });
+});
+
 app.listen(3000, () => {
-  console.log("Listen to port:3000");
+  console.log("Listen to port: 3000");
 });
