@@ -18,4 +18,4 @@ app.use((req, res) => {
   res.status(404).json({ messagr: "Not found" });
 });
 
-app.listen(3000);
+module.exports = app;
