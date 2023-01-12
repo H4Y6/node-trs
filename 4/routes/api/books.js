@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    console.log(req.params);
+    // console.log(req.params);
     const { id } = req.params;
     const idBook = await books.getById(id);
     if (!idBook) {
