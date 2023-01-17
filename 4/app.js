@@ -37,6 +37,7 @@ const formatLogger = app.get("env") === "development" ? "dev" : "short";
 app.use(logger(formatLogger));
 
 app.use(cors());
+app.use(express.json());
 app.use("/api/books", booksRouter);
 
 app.use((req, res) => {

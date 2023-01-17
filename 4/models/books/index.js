@@ -25,9 +25,9 @@ const getById = async (id) => {
 const add = async ({ title, author }) => {
   const books = await getAll();
   const newBook = {
+    id: nanoid(),
     title,
     author,
-    id: nanoid(),
   };
   books.push(newBook);
   await updateBooks(books);
