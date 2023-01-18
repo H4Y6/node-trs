@@ -22,7 +22,7 @@ const getById = async (id) => {
   return result;
 };
 
-const add = async ({ title, author }) => {
+const add = async (title, author) => {
   const books = await getAll();
   const newBook = {
     id: nanoid(),
