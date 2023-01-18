@@ -72,4 +72,19 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await books.removeById(id);
+    if (!result) {
+      throw createError(404);
+    }
+    // res.json(result);
+    // res.status(204).json({ message: "Message deleted" });
+    res.json({ message: "Message deleted" });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
