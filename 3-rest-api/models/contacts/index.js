@@ -10,4 +10,9 @@ const listContacts = async () => {
   return JSON.parse(data);
 };
 
+const getContactById = async (contactId) => {};
+const addContact = async (name, email, phone) => {};
+const removeContact = async (contactId) => {};
+const updateContact = async (contactId, name, email, phone) => {};
+
 module.exports = { listContacts };
