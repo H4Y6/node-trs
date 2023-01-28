@@ -10,6 +10,7 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -18,6 +19,16 @@ router.get("/:id", async (req, res, next) => {
       return res.status(404).json({ message: "Not found" });
     }
     res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/", async (req, res, next) => {
+  try {
+    const { name, email, phone } = req.body;
+    const result = await contacts.addContact(name, email, phone);
+    res.status(201).json(result);
   } catch (error) {
     next(error);
   }
