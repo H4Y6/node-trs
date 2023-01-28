@@ -24,10 +24,6 @@ router.get("/:id", async (req, res, next) => {
     const { id } = req.params;
     const result = await contacts.getContactById(id);
     if (!result) {
-      // return res.status(404).json({ message: "Not found" });
-      // const error = new Error("Not found");
-      // error.status = 404;
-      // throw error;
       throw createError(404);
     }
     res.json(result);
@@ -40,9 +36,7 @@ router.post("/", async (req, res, next) => {
   try {
     const { error } = contactsAddSchema.validate(req.body);
     if (error) {
-      const error = new Error("Wrong requst body");
-      error.status = 400;
-      throw error;
+      throw createError(400, error.message);
     }
     const { name, email, phone } = req.body;
     const result = await contacts.addContact(name, email, phone);
