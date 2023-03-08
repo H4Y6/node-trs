@@ -4,14 +4,11 @@ const getCurrentTime = () => {
 };
 const calculateFullYear = () => {
   const date = new Date();
-  return `Now is ${date.getFullYear()}.\n`;
+  return `Now is ${date.getFullYear()}. <br>\n`;
 };
 
-const currentTime = document.getElementById("time");
-currentTime.innerHTML = getCurrentTime();
-currentTime.style.textAlign = "center";
+const currentMoment = document.getElementById("time");
+currentMoment.innerHTML = calculateFullYear() + getCurrentTime();
+currentMoment.style.textAlign = "center";
 
-const year = document.getElementById("year");
-year.innerHTML = calculateFullYear();
-year.style.textAlign = "center";
 console.log(calculateFullYear(), getCurrentTime());
