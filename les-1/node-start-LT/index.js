@@ -9,6 +9,9 @@ const calculateFullYear = () => {
 
 const currentMoment = document.getElementById("time");
 currentMoment.innerHTML = calculateFullYear() + getCurrentTime();
-currentMoment.style.textAlign = "center";
+currentMoment.style.cssText = "background: lightBlue; text-align: center";
+
+const flower = document.querySelector(".flower");
+flower.style.cssText = "background: lightBlue; text-align: center";
 
 console.log(calculateFullYear(), getCurrentTime());
