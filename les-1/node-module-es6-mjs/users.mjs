@@ -2,9 +2,10 @@ const admins = ["Alex", "Andrey", "VAsiliy"];
 
 const clients = ["Anna", "Alina", "Tamara"];
 
-const users = {
-    admins,
-    clients
-};
+// const users = {
+//     admins,
+//     clients
+// };
+// export default users;
 
-export default users;
+export default { admins, clients };
