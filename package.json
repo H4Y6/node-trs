@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/H4Y6/node-trs/issues"
   },
-  "homepage": "https://github.com/H4Y6/node-trs#readme"
+  "homepage": "https://github.com/H4Y6/node-trs#readme",
+  "dependencies": {
+    "commander": "^10.0.0",
+    "nanoid": "^3.3.4",
+    "yargs": "^17.7.1"
+  }
 }
