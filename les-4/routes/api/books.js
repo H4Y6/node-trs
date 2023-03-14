@@ -60,7 +60,7 @@ router.put("/:id", async (req, res, next) => {
     const { title, author } = req.body;
     const result = await books.updateById(id, title, author);
     if (!result) {
-      throw createError(400, error.message);
+      throw createError(404);
     }
     res.json(result);
   } catch (error) {
