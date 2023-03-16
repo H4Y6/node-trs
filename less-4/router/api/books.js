@@ -34,7 +34,7 @@ router.post("/", async (req, res, next) => {
   try {
     const { title, author } = req.body;
     const result = await books.add(title, author);
-    res.json(result);
+    res.status(201).json(result);
   } catch (error) {
     next(error);
   }
