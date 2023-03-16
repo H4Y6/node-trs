@@ -1,7 +1,13 @@
 const express = require("express");
+const Joi = require("joi");
 const books = require("../../models/books");
 const createError = require("../../helpers");
 const router = express.Router();
+
+const bookAddSchema = Joi.object({
+  title: Joi.string().required(),
+  author: Joi.string().required(),
+});
 
 router.get("/", async (req, res, next) => {
   try {
@@ -32,6 +38,10 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
+    const { error } = bookAddSchema.validate(req.body);
+    if (error) {
+      throw createError(400, error.message);
+    }
     const { title, author } = req.body;
     const result = await books.add(title, author);
     res.status(201).json(result);
