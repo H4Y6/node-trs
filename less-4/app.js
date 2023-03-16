@@ -17,9 +17,11 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: "Server error" });
+  res.status(500).json({ message: err.message });
 });
 
 app.listen(3000, () => {
   console.log("Use port: 3000 ");
 });
+
+module.exports = app;
