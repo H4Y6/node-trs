@@ -52,7 +52,7 @@ const removeById = async (id) => {
     return null;
   }
   const [removeBook] = books.splice(idx, 1);
-  updateBooks(books);
+  await updateBooks(books);
   return removeBook;
 };
 

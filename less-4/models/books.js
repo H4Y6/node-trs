@@ -41,4 +41,15 @@ const updateById = async (id, title, author) => {
   return newBook;
 };
 
-module.exports = { getAll, getById, add, updateById };
+const deleteById = async (id) => {
+  const books = await getAll();
+  const idx = books.findIndex((b) => b.id === id);
+  if (idx === -1) {
+    return null;
+  }
+  const [deleBook] = books.splice(idx, 1);
+  await updateBooks(books);
+  return deleBook;
+};
+
+module.exports = { getAll, getById, add, updateById, deleteById };
