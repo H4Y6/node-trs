@@ -8,4 +8,13 @@ const getAll = async () => {
   return JSON.parse(data);
 };
 
-module.exports = { getAll };
+const getById = async (id) => {
+  const books = await getAll();
+  const oneBook = books.find((b) => b.id === id);
+  if (!oneBook) {
+    return null;
+  }
+  return oneBook;
+};
+
+module.exports = { getAll, getById };
