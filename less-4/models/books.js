@@ -1,5 +1,6 @@
 const fs = require("fs/promises");
 const path = require("path");
+const { nanoid } = require("nanoid");
 
 const booksPath = path.join(__dirname, "books.json");
 
@@ -17,4 +18,12 @@ const getById = async (id) => {
   return oneBook;
 };
 
-module.exports = { getAll, getById };
+const add = async (title, author) => {
+  const books = await getAll();
+  const newBook = { id: nanoid(), title, author };
+  books.push(newBook);
+  await fs.writeFile(booksPath, JSON.stringify(books, null, 2));
+  return newBook;
+};
+
+module.exports = { getAll, getById, add };
