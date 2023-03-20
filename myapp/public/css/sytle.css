@@ -14,6 +14,12 @@
   color: rgb(239, 236, 242);
 }
 
+.btn:hover {
+  background-color: rgb(101, 60, 13);
+}
+.btn:hover {
+  color: rgb(232, 102, 176);
+}
 .time {
-  color: rgb(231, 184, 134);
+  color: blanchedalmond;
 }
