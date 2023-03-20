@@ -6,16 +6,16 @@ const getTime = () => new Date().toString().slice(0, 25);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
+app.get("/main", (req, res) => {
+  res.send("<h1>Hello, world!<h1>");
 });
 
 app.get("/contacts", (req, res) => {
-  res.send("<H1>Contact page</H1>");
+  res.send("<H2>Contact page</H2>");
 });
 
 app.get("/time", (req, res) => {
-  res.send(`<h2>${getTime()}</h2>`);
+  res.send(`<h2 class= 'timer'>${getTime()}</h2>`);
 });
 
 app.listen(3000, () => {
