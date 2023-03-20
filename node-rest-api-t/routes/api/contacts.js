@@ -19,7 +19,7 @@ router.get("/:contactId", async (req, res, next) => {
     const { contactId } = req.params;
     const result = await contacts.getContactById(contactId);
     if (!result) {
-      throw createError(500);
+      throw createError(404);
     }
     res.json(result);
   } catch (error) {
