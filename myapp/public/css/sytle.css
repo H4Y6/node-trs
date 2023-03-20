@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: aqua;
+  background-color: rgb(26, 101, 101);
 }
 .btn {
   height: 77px;
@@ -12,4 +12,8 @@
   font-size: 24px;
   background-color: rgb(10, 84, 32);
   color: rgb(239, 236, 242);
+}
+
+.time {
+  color: rgb(231, 184, 134);
 }
