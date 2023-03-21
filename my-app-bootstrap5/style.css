@@ -1,0 +1,7 @@
+@media (max-width: 768px) {
+  .rotate-sm-90 {
+    font-size: 1rem;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+  }
+}
