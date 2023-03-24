@@ -9,12 +9,12 @@
 //   .catch((error) => error.message);
 
 const mongoose = require("mongoose");
-require("dotenv").config();
 mongoose.set("strictQuery", false);
+
+require("dotenv").config();
 const { DB_HOST } = process.env;
+
 mongoose
   .connect(DB_HOST)
-  .then(() => {
-    console.log("Database`s connected");
-  })
+  .then(() => console.log("DB is connected"))
   .catch((error) => error.message);
