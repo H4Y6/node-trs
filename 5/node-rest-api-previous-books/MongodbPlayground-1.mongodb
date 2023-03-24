@@ -12,6 +12,8 @@ use('booksDB');
 // db.books.drop();
 // ------------------------
 
+// db.books.find()
+
 // Insert a few documents into the sales collection.
 
 // --------------------------------------------------------------
@@ -19,42 +21,41 @@ use('booksDB');
 //   {
 //     "title": "Eloquent JavaScript, Third Edition",
 //     "author": "Marijn Haverbeke",
-//     "createdAt": new Date(),
 //   },
 //   {
 //     "title": "Practical Modern JavaScript",
 //     "author": "Nicolas Bevacqua",
-//     "createdAt": new Date(),
+    
 //   },
 //   {
 //     "title": "Understanding ECMAScript 6",
 //     "author": "Nicholas C. Zakas",
-//     "createdAt": new Date(),
+   
 //   },
 //   {
 //     "title": "Speaking JavaScript",
 //     "author": "Axel Rauschmayer",
-//     "createdAt": new Date(),
+   
 //   },
 //   {
 //     "title": "Learning JavaScript Design Patterns",
 //     "author": "Addy Osmani",
-//     "createdAt": new Date(),
+    
 //   },
 //   {
 //     "title": "You Don't Know JS Yet",
 //     "author": "Kyle Simpson",
-//     "createdAt": new Date(),
+   
 //   },
 //   {
 //     "title": "Pro Git",
 //     "author": "Scott Chacon and Ben Straub",
-//     "createdAt": new Date(),
+   
 //   },
 //   {
 //     "title": "Rethinking Productivity in Software Engineering",
 //     "author": "Caitlin Sadowski, Thomas Zimmermann",
-//     "createdAt": new Date(),
+   
 //   }
 // ]
 // );
