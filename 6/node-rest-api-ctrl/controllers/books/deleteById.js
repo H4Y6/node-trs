@@ -1,5 +1,5 @@
-const Book = require("../../models/books");
-const createError = require("../../helpers");
+const { Book } = require("../../models/books");
+const { createError } = require("../../helpers");
 const deleteById = async (req, res, next) => {
   try {
     const { id } = req.params;
