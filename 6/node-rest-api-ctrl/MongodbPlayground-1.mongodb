@@ -13,7 +13,7 @@ use('booksDB');
 // The drop() command destroys all data from a collection.
 // Make sure you run it against the correct database and collection.
 // ------------------------
-// db.books.drop();
+db.books.drop();
 // ------------------------
 
 // db.books.find()
@@ -22,21 +22,22 @@ use('booksDB');
 //      genre:
 // "fancy"
 //        })
-db.books.findOneAndDelete({   
-     isbn:
-"529-763-6341-25-1"
-       })
+// --------------------------------
+// db.books.findOneAndDelete({   
+//      isbn:
+// "529-763-6341-25-1"
+//        })
 // ----------------------------
 // db.books.deleteOne({   
 //       isbn:
 // "529-763-6345-25-1"
 //        })
 // -----------------------------------------------------
-db.books.insertOne({ 
-    "title": "Eloquent JavaScript, Third Edition",
-    "author": "Marijn Haverbeke",
-    "genre": "fancy",
-    "isbn": "329-762-6341-25-1"})
+// db.books.insertOne({ 
+//     "title": "Eloquent JavaScript, Third Edition",
+//     "author": "Marijn Haverbeke",
+//     "genre": "fancy",
+//     "isbn": "329-762-6341-25-1"})
     // ----------------------------------------------
 // db.books.findOne({isbn:"329-762-2341-25-1"})
 
