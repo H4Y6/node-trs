@@ -1,8 +1,3 @@
-
-
-//  Collection.remove() is deprecated. Use deleteOne,
-//   deleteMany, findOneAndDelete, or bulkWrite.
-
 // MongoDB Playground
 // To disable this template go to Settings | MongoDB | Use Default Template For Playground.
 // Make sure you are connected to enable completions and to be able to run a playground.
@@ -18,28 +13,6 @@ use('booksDB');
 // ------------------------
 
 // db.books.find()
-// -----------------------------------------------------
-// db.books.deleteOne({   
-//      genre:
-// "fancy"
-//        })
-db.books.findOneAndDelete({   
-     isbn:
-"529-763-6341-25-1"
-       })
-// ----------------------------
-// db.books.deleteOne({   
-//       isbn:
-// "529-763-6345-25-1"
-//        })
-// -----------------------------------------------------
-db.books.insertOne({ 
-    "title": "Eloquent JavaScript, Third Edition",
-    "author": "Marijn Haverbeke",
-    "genre": "fancy",
-    "isbn": "329-762-6341-25-1"})
-    // ----------------------------------------------
-// db.books.findOne({isbn:"329-762-2341-25-1"})
 
 // Insert a few documents into the sales collection.
 
