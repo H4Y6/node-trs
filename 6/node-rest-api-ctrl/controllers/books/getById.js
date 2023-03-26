@@ -1,4 +1,4 @@
-const Book = require("../../models/books");
+const { Book } = require("../../models/books");
 const createError = require("../../helpers");
 
 const getById = async (req, res, next) => {

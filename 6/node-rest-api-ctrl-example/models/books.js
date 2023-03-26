@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const bookAddSchema = Joi.object({
+const addSchema = Joi.object({
   title: Joi.string().required(),
   author: Joi.string().required(),
   favorite: Joi.boolean(),
@@ -10,7 +10,7 @@ const bookAddSchema = Joi.object({
     .required(),
 });
 
-const bookUpdateFavoriteSchema = Joi.object({
+const updateFavoriteSchema = Joi.object({
   favorite: Joi.boolean(),
 });
 
@@ -33,8 +33,8 @@ const bookSchema = new Schema(
 );
 
 const schemas = {
-  add: bookAddSchema,
-  updateFavorite: bookUpdateFavoriteSchema,
+  add: addSchema,
+  updateFavorite: updateFavoriteSchema,
 };
 
 const Book = model("book", bookSchema);

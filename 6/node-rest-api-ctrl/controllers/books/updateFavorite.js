@@ -1,14 +1,9 @@
-const Book = require("../../models/books");
+const { Book, schemas } = require("../../models/books");
 const createError = require("../../helpers");
-const Joi = require("joi");
-
-const bookUpdateFavoriteSchema = Joi.object({
-  favorite: Joi.boolean(),
-});
 
 const updateFavorite = async (req, res, next) => {
   try {
-    const { error } = bookUpdateFavoriteSchema.validate(req.body);
+    const { error } = schemas.updateFavorite.validate(req.body);
     if (error) {
       throw createError(400, error.message);
     }
