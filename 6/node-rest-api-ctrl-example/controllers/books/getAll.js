@@ -1,4 +1,6 @@
-const { Book } = require("../../models/books");
+const { basedir } = global;
+
+const { Book } = require(`${basedir}/models/books`);
 
 const getAll = async (req, res, next) => {
   const result = await Book.find({}, "-createdAt -updatedAt");

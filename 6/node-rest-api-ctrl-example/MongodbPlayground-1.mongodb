@@ -9,10 +9,12 @@ use('booksDB');
 // The drop() command destroys all data from a collection.
 // Make sure you run it against the correct database and collection.
 // ------------------------
-db.books.drop();
+// db.books.drop();
 // ------------------------
-
+// db.books.deleteOne({isbn:"329-763-6361-25-1"})
+// ------------------------
 // db.books.find()
+
 
 // Insert a few documents into the sales collection.
 
