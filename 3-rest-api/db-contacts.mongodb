@@ -12,7 +12,7 @@ use(database);
 
 
 
-db.contacts.find()
+db.contacts.find({"id":"6421ab3549795bc803908cd7"})
 
 
 // Create a new collection.

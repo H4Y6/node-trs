@@ -16,7 +16,7 @@ const bookAddSchema = Joi.object({
     .pattern(/\d{3}-\d{3}-\d{4}-\d{2}-\d/)
     .required(),
 });
-const bookUpdateFavoriteSchema = Joi.object({
+const updateStatusSchema = Joi.object({
   favorite: Joi.boolean(),
 });
 
@@ -92,7 +92,7 @@ router.delete("/:id", async (req, res, next) => {
 
 router.patch("/:id/favorite", async (req, res, next) => {
   try {
-    const { error } = bookUpdateFavoriteSchema.validate(req.body);
+    const { error } = updateStatusSchema.validate(req.body);
     if (error) {
       throw createError(400, error.message);
     }
