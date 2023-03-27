@@ -1,0 +1,102 @@
+// MongoDB Playground
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+const database = 'db-contacts';
+const collection = 'contacts';
+
+// Create a new database.
+use(database);
+
+// db.contacts.drop()
+
+
+
+
+db.contacts.find()
+
+
+// Create a new collection.
+
+// db.createCollection(collection);
+// db.contacts.insertMany([
+//   {     
+//     "name": "Allen Raymond",
+//     "email": "nulla.ante@vestibul.co.uk",
+//     "phone": "(992) 914-3792"
+//   },
+//   {     
+//     "name": "Chaim Lewis",
+//     "email": "dui.in@egetlacus.ca",
+//     "phone": "(294) 840-6685"
+//   },
+//   {     
+//     "name": "Kennedy Lane",
+//     "email": "mattis.Cras@nonenimMauris.net",
+//     "phone": "(542) 451-7038"
+//   },
+//   {     
+//     "name": "Wylie Pope",
+//     "email": "est@utquamvel.net",
+//     "phone": "(692) 802-2949"
+//   },
+//   {     
+//     "name": "Cyrus Jackson",
+//     "email": "nibh@semsempererat.com",
+//     "phone": "(501) 472-5218"
+//   },
+//   {     
+//     "name": "Abbot Franks",
+//     "email": "scelerisque@magnis.org",
+//     "phone": "(186) 568-3720"
+//   },
+//   {     
+//     "name": "Reuben Henry",
+//     "email": "pharetra.ut@dictum.co.uk",
+//     "phone": "(715) 598-5792"
+//   },
+//   {     
+//     "name": "Simon Morton",
+//     "email": "dui.Fusce.diam@Donec.com",
+//     "phone": "(233) 738-2360"
+//   },
+//   {     
+//     "name": "Thomas Lucas",
+//     "email": "nec@Nulla.com",
+//     "phone": "(704) 398-7993"
+//   },
+//   {
+//     "name": "Alec Howard",
+//     "email": "Donec.elementum@scelerisquescelerisquedui.net",
+//     "phone": "(748) 206-2688"
+//   }
+// ])
+
+
+// The prototype form to create a collection:
+/* db.createCollection( <name>,
+  {
+    capped: <boolean>,
+    autoIndexId: <boolean>,
+    size: <number>,
+    max: <number>,
+    storageEngine: <document>,
+    validator: <document>,
+    validationLevel: <string>,
+    validationAction: <string>,
+    indexOptionDefaults: <document>,
+    viewOn: <string>,
+    pipeline: <pipeline>,
+    collation: <document>,
+    writeConcern: <document>,
+    timeseries: { // Added in MongoDB 5.0
+      timeField: <string>, // required for time series collections
+      metaField: <string>,
+      granularity: <string>
+    },
+    expireAfterSeconds: <number>,
+    clusteredIndex: <document>, // Added in MongoDB 5.3
+  }
+)*/
+
+// More information on the `createCollection` command can be found at:
+// https://www.mongodb.com/docs/manual/reference/method/db.createCollection/
