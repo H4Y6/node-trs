@@ -1,3 +1,13 @@
 const app = require("./app");
-
-app.listen(3000, () => console.log("Listenning to port: 3000 "));
+const mongoose = require("mongoose");
+const { DB_HOST, PORT = 3000 } = process.env;
+mongoose
+  .connect(DB_HOST)
+  .then(() => {
+    app.listen(PORT);
+    console.log("Database connection successful");
+  })
+  .catch((error) => {
+    console.log(error);
+    process.exit;
+  });
