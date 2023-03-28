@@ -1,27 +1,22 @@
-const Joi = require("joi");
-
-const Contact = require("../models/contacts");
+const { Contact, schemas } = require("../models/contacts");
 const { createError } = require("../helpers");
-
-const updateFavoriteSchema = Joi.object({
-  favorite: Joi.boolean().required(),
-});
 
 const updateStatus = async (req, res, next) => {
   try {
-    console.log(req.body);
-    if (!req.body) return res.status(400).json({ message: "Not found" });
-    const { error } = updateFavoriteSchema.validate(req.body);
+    const { error } = schemas.updateStatus.validate(req.body);
     if (error) {
       throw createError(400);
     }
-
     const { id } = req.params;
-    const result = await Contact.findByIdAndUpdate(id, req.body, { new: true });
+    const result = await Contact.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    console.log(req.body);
+
     if (!result) {
       throw createError(404);
     }
-    res.status(201).json(result);
+    res.json(result);
   } catch (error) {
     next(error);
   }

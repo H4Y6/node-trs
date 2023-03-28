@@ -1,8 +1,21 @@
 const { Schema, model } = require("mongoose");
 
+const Joi = require("joi");
+
+const addSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().required(),
+  phone: Joi.string().required(),
+  favorite: Joi.boolean(),
+});
+
+const updateStatusSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
+
 const contactsSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: [true, "Set name for contact"] },
     email: {
       type: String,
       match: /\w+@\w+\.\w+/,
@@ -19,4 +32,6 @@ const contactsSchema = new Schema(
 );
 const Contact = model("contact", contactsSchema);
 
-module.exports = Contact;
+const schemas = { add: addSchema, updateStatus: updateStatusSchema };
+
+module.exports = { Contact, schemas };
