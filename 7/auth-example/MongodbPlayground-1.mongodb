@@ -4,7 +4,7 @@
 // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
 
 // Select the database to use.
-use('booksDB');
+use("db-books");
 
 // The drop() command destroys all data from a collection.
 // Make sure you run it against the correct database and collection.
@@ -13,8 +13,12 @@ use('booksDB');
 // ------------------------
 // db.books.deleteOne({isbn:"329-763-6361-25-1"})
 // ------------------------
-// db.books.find()
-
+// db.users.find();
+// db.users.insertOne({
+//   name: "Ann Spowg",
+//   email: "Marijn@Haverbeke.iu",
+//   password: "123456",
+// });
 
 // Insert a few documents into the sales collection.
 
@@ -27,37 +31,37 @@ use('booksDB');
 //   {
 //     "title": "Practical Modern JavaScript",
 //     "author": "Nicolas Bevacqua",
-    
+
 //   },
 //   {
 //     "title": "Understanding ECMAScript 6",
 //     "author": "Nicholas C. Zakas",
-   
+
 //   },
 //   {
 //     "title": "Speaking JavaScript",
 //     "author": "Axel Rauschmayer",
-   
+
 //   },
 //   {
 //     "title": "Learning JavaScript Design Patterns",
 //     "author": "Addy Osmani",
-    
+
 //   },
 //   {
 //     "title": "You Don't Know JS Yet",
 //     "author": "Kyle Simpson",
-   
+
 //   },
 //   {
 //     "title": "Pro Git",
 //     "author": "Scott Chacon and Ben Straub",
-   
+
 //   },
 //   {
 //     "title": "Rethinking Productivity in Software Engineering",
 //     "author": "Caitlin Sadowski, Thomas Zimmermann",
-   
+
 //   }
 // ]
 // );
