@@ -5,5 +5,6 @@ const { ctrlWrapper } = require(`${basedir}/helpers`);
 const router = express.Router();
 
 router.post("/register", ctrlWrapper(ctrl.register));
+router.post("/login", ctrlWrapper(ctrl.login));
 
 module.exports = router;
