@@ -5,9 +5,8 @@ require("dotenv").config();
 
 global.basedir = __dirname;
 
-const authRouter = require("./routes/api/auth");
-
 const booksRouter = require("./routes/api/books");
+const authRouter = require("./routes/api/auth");
 
 const app = express();
 
@@ -17,8 +16,8 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/auth", authRouter);
 app.use("/api/books", booksRouter);
+app.use("/api/auth", authRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
