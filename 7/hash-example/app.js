@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 
-const hashPassport = async (password) => {
+const hashPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
   //   console.log(salt);
   const result = await bcrypt.hash(password, 10);
@@ -9,4 +9,4 @@ const hashPassport = async (password) => {
   //   console.log(compareResult);
 };
 
-hashPassport("123456");
+hashPassword("123456");
