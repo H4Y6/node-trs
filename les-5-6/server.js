@@ -1,5 +1,16 @@
+const mongoose = require("mongoose");
+
 const app = require("./app");
 
-app.listen(3000, () => {
-  console.log("Use port: 30000");
-});
+const { DB_HOST, PORT = 3000 } = process.env;
+
+mongoose
+  .connect(DB_HOST)
+  .then(() => {
+    app.listen(PORT);
+    console.log(` Database connection successful, port: ${PORT}.`);
+  })
+  .catch((error) => {
+    console.log(error);
+    process.exit(1);
+  });
