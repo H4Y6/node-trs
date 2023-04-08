@@ -3,6 +3,8 @@ const cors = require("cors");
 const logger = require("morgan");
 require("dotenv").config();
 
+global.basedir = __dirname;
+
 const booksRouter = require("./routes/api/books");
 
 const app = express();
