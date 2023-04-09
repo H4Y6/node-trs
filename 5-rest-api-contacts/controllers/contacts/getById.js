@@ -4,7 +4,7 @@ const { createError } = require(`${basedir}/helpers`);
 
 const getById = async (req, res, next) => {
   const { contactId } = req.params;
-  const result = await Contact.findById(contactId, "-createdAt -updatedAt");
+  const result = await Contact.findById(contactId, "name email phone favorite");
   if (!result) {
     throw createError(404);
   }
