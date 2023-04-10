@@ -12,7 +12,7 @@ router.get("/", ctrlWrapper(ctrl.getAll));
 
 router.get("/:id", ctrlWrapper(ctrl.getById));
 
-router.post("/"), ctrlWrapper(ctrl.add);
+router.post("/", ctrlWrapper(ctrl.add));
 
 router.put("/:id", ctrlWrapper(ctrl.updateById));
 

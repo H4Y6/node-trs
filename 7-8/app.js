@@ -16,7 +16,7 @@ app.use(logger(formatsLogger));
 app.use(async (req, res, next) => {
   const { method, url } = req;
   const date = new Date().toString().slice(0, 25);
-  await fs.appendFile(".server.log", `${method}, ${url}, ${date}\n`);
+  await fs.appendFile(".server.log", ` ${date}: ${method}, ${url}\n`);
   next();
 });
 app.use(cors());
