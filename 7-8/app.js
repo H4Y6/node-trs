@@ -2,6 +2,9 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
+const fs = require("fs/promises");
+
+global.basedir = __dirname;
 
 const booksRouter = require("./routes/api/books");
 
@@ -10,6 +13,12 @@ const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
+app.use(async (req, res, next) => {
+  const { method, url } = req;
+  const date = new Date().toString().slice(0, 25);
+  await fs.appendFile(".server.log", ` ${date}: ${method}, ${url}\n`);
+  next();
+});
 app.use(cors());
 app.use(express.json());
 
