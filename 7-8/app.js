@@ -4,6 +4,8 @@ const cors = require("cors");
 require("dotenv").config();
 const fs = require("fs/promises");
 
+global.basedir = __dirname;
+
 const booksRouter = require("./routes/api/books");
 
 const app = express();
