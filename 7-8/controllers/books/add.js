@@ -1,5 +1,5 @@
 const { basedir } = global;
-const { Book, schemas } = require(`../../models/books`);
+const { Book, schemas } = require(`${basedir}/models/books`);
 const { createError } = require(`${basedir}/helpers`);
 
 const add = async (req, res, next) => {
