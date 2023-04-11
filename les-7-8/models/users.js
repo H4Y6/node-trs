@@ -1,8 +1,7 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
-const emailRegexp = /\S+@\S+\.\w{2,3/;
-
+const emailRegexp = /^\S+@\S+\.\S+$/;
 const userSchema = new Schema(
   {
     name: { type: String, required: true },
