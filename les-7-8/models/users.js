@@ -1,6 +1,5 @@
-const { default: mongoose } = require("mongoose");
-
-const { Schema, model } = mongoose;
+const { Schema, model } = require("mongoose");
+// const Joi = require("joi");
 
 const emailRegexp = /\S+@\S+\.\w{2,3/;
 
