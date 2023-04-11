@@ -1,9 +1,13 @@
 const express = require("express");
+
+const { basedir } = global;
+const ctrl = require(`${basedir}/controllers/books`);
+
 const Joi = require("joi");
 
 const Book = require("../../models/books");
 
-const { createError } = require("../../helpers");
+const { createError, ctrlWrapper } = require(`${basedir}/helpers`);
 
 const router = express.Router();
 
@@ -20,7 +24,7 @@ const updateStatusSchema = Joi.object({
   favorite: Joi.boolean(),
 });
 
-router.get("/");
+router.get("/", ctrlWrapper(ctrl.getAll));
 
 router.get("/:id", async (req, res, next) => {
   try {
