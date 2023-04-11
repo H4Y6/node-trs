@@ -2,7 +2,7 @@ const { basedir } = global;
 const { Book, schemas } = require(`${basedir}/models/books`);
 const { createError } = require(`${basedir}/helpers`);
 
-const updateById = async (req, res, next) => {
+const updateById = async (req, res) => {
   const { error } = schemas.add.validate(req.body);
   if (error) {
     throw createError(400, error.message);

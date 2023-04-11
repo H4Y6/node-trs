@@ -2,7 +2,7 @@ const { basedir } = global;
 const { Book } = require(`${basedir}/models/books`);
 const { createError } = require(`${basedir}/helpers`);
 
-const getById = async (req, res, next) => {
+const getById = async (req, res) => {
   const { id } = req.params;
   const result = await Book.findById(id);
   // const result = await Book.findOne({ _id: id });

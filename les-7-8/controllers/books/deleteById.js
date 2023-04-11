@@ -2,7 +2,7 @@ const { basedir } = global;
 const { Book } = require(`${basedir}/models/books`);
 const { createError } = require(`${basedir}/helpers`);
 
-const deleteById = async (req, res, next) => {
+const deleteById = async (req, res) => {
   const { id } = req.params;
   const result = await Book.findByIdAndRemove(id);
   if (!result) {
