@@ -5,7 +5,11 @@ const bookSchema = new Schema(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
-    genre: { type: String, enum: ["fancy", "love"], required: true },
+    genres: {
+      type: String,
+      enum: ["fancy", "science", "love"],
+      required: true,
+    },
     favorite: { type: Boolean, default: false },
     isbn: {
       type: String,
@@ -21,7 +25,7 @@ const addSchema = Joi.object({
   title: Joi.string().required(),
   author: Joi.string().required(),
   favorite: Joi.boolean(),
-  genre: Joi.string().valueOf("fancy", "love").required(),
+  genres: Joi.string().valueOf("fancy", "science", "love").required(),
   isbn: Joi.string()
     .pattern(/\d{3}-\d{3}-\d{4}-\d{2}-\d/)
     .required(),
