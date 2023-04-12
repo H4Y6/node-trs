@@ -5,7 +5,7 @@ const { createError } = require(`${basedir}/helpers`);
 const { User } = require(`${basedir}/models/users`);
 const { SECRET_KEY } = process.env;
 
-const auth = async (req, res, next) => {
+const auth = async (req, _, next) => {
   const { authorization = "" } = req.headers;
   const [bearer, token] = authorization.split(" ");
   if (bearer !== "Bearer") {
