@@ -4,10 +4,19 @@ const cors = require("cors");
 require("dotenv").config();
 global.basedir = __dirname;
 
+const fs = require("fs/promises");
+
 const booksRouter = require("./routes/api/books");
 const authRouter = require("./routes/api/auth");
 
 const app = express();
+
+app.use(async (req, res, next) => {
+  const date = new Date().toString().slice(0, 24);
+  const { method, url } = req;
+  await fs.appendFile(".server.log", `${date} ${method} ${url}\n`);
+  next();
+});
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
