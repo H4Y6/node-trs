@@ -1,9 +1,11 @@
 const express = require("express");
 const Joi = require("joi");
+const { basedir } = global;
 
 const Book = require("../../models/books");
 
-const { createError } = require("../../helpers");
+const { createError, ctrlWrapper } = require("../../helpers");
+const ctrl = require(`${basedir}/controllers`);
 
 const router = express.Router();
 
@@ -20,29 +22,9 @@ const updateStatusSchema = Joi.object({
   favorite: Joi.boolean(),
 });
 
-router.get("/", async (req, res, next) => {
-  try {
-    const result = await Book.find({}, "-createdAt -updatedAt");
-    // const result = await Book.find({}, "title author");
-    res.json(result);
-  } catch (error) {
-    next(error);
-  }
-});
+router.get("/", ctrlWrapper(ctrl.getAll));
 
-router.get("/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const result = await Book.findById(id);
-    // const result = await Book.findOne({ _id: id });
-    if (!result) {
-      throw createError(404);
-    }
-    res.json(result);
-  } catch (error) {
-    next(error);
-  }
-});
+router.get("/:id", ctrlWrapper(ctrl.getById));
 
 router.post("/", async (req, res, next) => {
   try {
