@@ -4,10 +4,11 @@ const { basedir } = global;
 
 const { ctrlWrapper } = require("../../helpers");
 
-const ctrl = require(`${basedir}/controllers`);
+const ctrl = require(`${basedir}/controllers/auth`);
 
 const router = express.Router();
 
 router.post("/register", ctrlWrapper(ctrl.register));
+router.post("/login", ctrlWrapper(ctrl.login));
 
 module.exports = router;

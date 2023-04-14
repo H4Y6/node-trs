@@ -25,6 +25,6 @@ const loginSchema = Joi.object({
 
 const schemas = { register: registerSchema, login: loginSchema };
 
-const Book = model("book", userSchema);
+const User = model("user", userSchema);
 
-module.exports = { Book, schemas };
+module.exports = { User, schemas };
