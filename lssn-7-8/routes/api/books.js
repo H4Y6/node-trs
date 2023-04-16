@@ -1,7 +1,7 @@
 const express = require("express");
 const Joi = require("joi");
 
-const Book = require("../../models/books");
+const { Book } = require("../../models/books");
 
 const { createError } = require("../../helpers");
 
