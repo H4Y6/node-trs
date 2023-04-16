@@ -11,7 +11,7 @@ const bookAddSchema = Joi.object({
   title: Joi.string().required(),
   author: Joi.string().required(),
   favorite: Joi.boolean(),
-  genre: Joi.string().valueOf("fancy", "love").required(),
+  genres: Joi.string().valueOf("fancy", "love").required(),
   isbn: Joi.string()
     .pattern(/\d{3}-\d{3}-\d{4}-\d{2}-\d/)
     .required(),

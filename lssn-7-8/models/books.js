@@ -4,7 +4,7 @@ const bookSchema = new Schema(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
-    genre: { type: String, enum: ["fancy", "love"], required: true },
+    genres: { type: String, enum: ["fancy", "love"], required: true },
     favorite: { type: Boolean, default: false },
     isbn: {
       type: String,
