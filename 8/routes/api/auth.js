@@ -6,4 +6,8 @@ const { auth } = require(`${basedir}/middlewares`);
 
 const router = express.Router();
 
+router.post("/register", ctrlWrapper(ctrl.register));
+router.post("/login", ctrlWrapper(ctrl.login));
+router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
+
 module.exports = router;
