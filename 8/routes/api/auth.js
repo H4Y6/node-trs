@@ -6,4 +6,6 @@ const { auth } = require(`${basedir}/middlewares`);
 
 const router = express.Router();
 
+router.post("/register", ctrlWrapper(ctrl.register));
+
 module.exports = router;
