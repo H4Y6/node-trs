@@ -26,38 +26,11 @@ const updateStatusSchema = Joi.object({
 
 router.get("/", ctrlWrapper(ctrl.getAll));
 
-router.get("/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const result = await Book.findById(id);
-    // const result = await Book.findOne({ _id: id });
-    if (!result) {
-      throw createError(404);
-    }
-    res.json(result);
-  } catch (error) {
-    next(error);
-  }
-});
+router.get("/:id", ctrlWrapper(ctrl.getById));
 
 router.post("/", ctrlWrapper(ctrl.add));
 
-router.put("/:id", async (req, res, next) => {
-  try {
-    const { error } = bookAddSchema.validate(req.body);
-    if (error) {
-      throw createError(400, error.message);
-    }
-    const { id } = req.params;
-    const result = await Book.findByIdAndUpdate(id, req.body, { new: true });
-    if (!result) {
-      throw createError(404);
-    }
-    res.json(result);
-  } catch (error) {
-    next(error);
-  }
-});
+router.put("/:id", ctrlWrapper(ctrl.updateById));
 
 router.delete("/:id", async (req, res, next) => {
   try {
