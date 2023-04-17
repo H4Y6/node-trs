@@ -17,6 +17,7 @@ const bookSchema = new Schema(
       required: true,
       unique: true,
     },
+    owner: String,
   },
   { versionKey: false, timestamps: true }
 );
