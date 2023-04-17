@@ -2,7 +2,11 @@ const { basedir } = global;
 const { Book } = require(`${basedir}/models/books`);
 
 const getAll = async (req, res) => {
-  const result = await Book.find({}, "-createdAt -updatedAt");
+  const { id: owner } = req.user;
+  const result = await Book.find({ owner }, "-createdAt -updatedAt").populate(
+    "owner",
+    "name email"
+  );
   res.json(result);
 };
 
