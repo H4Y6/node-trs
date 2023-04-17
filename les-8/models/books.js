@@ -17,7 +17,7 @@ const bookSchema = new Schema(
       required: true,
       unique: true,
     },
-    owner: String,
+    owner: { type: Schema.Types.ObjectId, ref: "user" },
   },
   { versionKey: false, timestamps: true }
 );
