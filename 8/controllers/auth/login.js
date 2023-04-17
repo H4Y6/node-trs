@@ -7,7 +7,7 @@ const { createError } = require(`${basedir}/helpers`);
 
 const { SECRET_KEY } = process.env;
 
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   const { error } = schemas.login.validate(req.body);
   if (error) {
     throw createError(400);

@@ -8,16 +8,16 @@ const { auth } = require(`${basedir}/middlewares`);
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(ctrl.getAll));
+router.get("/", auth, ctrlWrapper(ctrl.getAll));
 
-router.get("/:id", ctrlWrapper(ctrl.getById));
+router.get("/:id", auth, ctrlWrapper(ctrl.getById));
 
 router.post("/", auth, ctrlWrapper(ctrl.add));
 
-router.put("/:id", ctrlWrapper(ctrl.updateById));
+router.put("/:id", auth, ctrlWrapper(ctrl.updateById));
 
-router.delete("/:id", ctrlWrapper(ctrl.removeById));
+router.delete("/:id", auth, ctrlWrapper(ctrl.removeById));
 
-router.patch("/:id/favorite", ctrlWrapper(ctrl.updateFavorite));
+router.patch("/:id/favorite", auth, ctrlWrapper(ctrl.updateFavorite));
 
 module.exports = router;
