@@ -1,7 +1,7 @@
 const { Book } = require("../../models/books");
 const { createError } = require("../../helpers");
 
-const removeById = async (req, res, next) => {
+const removeById = async (req, res) => {
   const { id } = req.params;
   const result = await Book.findByIdAndRemove(id);
   if (!result) {

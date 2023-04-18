@@ -2,7 +2,7 @@ const { Book, schemas } = require("../../models/books");
 
 const { createError } = require("../../helpers");
 
-const updateFavorite = async (req, res, next) => {
+const updateFavorite = async (req, res) => {
   const { error } = schemas.updateFavorite.validate(req.body);
   if (error) {
     throw createError(400, error.message);
