@@ -3,8 +3,13 @@ const { User } = require(`${basedir}/models/users`);
 
 const logout = async (req, res) => {
   const { _id } = req.user;
-  await User.findByIdAndUpdate(_id, { token: "" });
-  res.status(204).send();
+  const result = await User.findByIdAndUpdate(
+    _id,
+    { token: "" },
+    { new: true }
+  );
+  res.json({ token: result.token });
+  // res.status(204).send();
 };
 
 module.exports = logout;
