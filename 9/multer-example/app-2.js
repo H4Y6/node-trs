@@ -14,28 +14,34 @@ const tempDir = path.join(__dirname, "temp");
 
 const multerConfig = multer.diskStorage({
   destination: tempDir,
-  filename: (req, file, cb) => cb(null, file.originalname),
+  fileName: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({
+  storage: multerConfig,
 });
 
 const books = [];
 
-const upload = multer({ storage: multerConfig });
-
-const booksDir = path.join(__dirname, "public", "books");
-
-app.get("/api/books", async (req, res) => {
+app.get("/api/books", (req, res) => {
   res.json(books);
 });
 
+const booksDir = path.join(__dirname, "public", "books");
+
 app.post("/api/books", upload.single("cover"), async (req, res) => {
   try {
-    // console.log(req.file);
     const { path: tempPath, originalname } = req.file;
     const uploadPath = path.join(booksDir, originalname);
-    // console.log(tempDir, uploadPath);
     await fs.rename(tempPath, uploadPath);
-    const cover = path.join("book", originalname);
-    const newBook = { name: req.body.name, cover, id: nanoid() };
+    const cover = path.join("books", originalname);
+    const newBook = {
+      name: req.body.name,
+      cover,
+      id: nanoid(),
+    };
     books.push(newBook);
     res.status(201).json(newBook);
   } catch (error) {
@@ -43,4 +49,4 @@ app.post("/api/books", upload.single("cover"), async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Listen to port: 3000"));
+app.listen(3000, console.log("Listen to port: 3000"));
