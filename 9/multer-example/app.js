@@ -55,8 +55,11 @@ const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs/promises");
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 const tempDir = path.join(__dirname, "temp");
 
@@ -69,6 +72,7 @@ multerConfig = multer.diskStorage({
 
 const upload = multer({ storage: multerConfig });
 
-app.post("/api/books", upload.single("cover"), (req, res) => {});
-
+app.post("/api/books", upload.single("cover"), async (req, res) => {
+  await fs.rename(tempDir, path.join("public", "books", originalname));
+});
 app.listen(3000, () => console.log("Listen to port: 3000"));
