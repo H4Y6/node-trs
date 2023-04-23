@@ -54,7 +54,21 @@
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
+const path = require("path");
 
 const app = express();
+
+const tempDir = path.join(__dirname, "temp");
+
+multerConfig = multer.diskStorage({
+  destination: tempDir,
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: multerConfig });
+
+app.post("/api/books", upload.single("cover"), (req, res) => {});
 
 app.listen(3000, () => console.log("Listen to port: 3000"));
