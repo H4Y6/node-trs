@@ -73,6 +73,6 @@ multerConfig = multer.diskStorage({
 const upload = multer({ storage: multerConfig });
 
 app.post("/api/books", upload.single("cover"), async (req, res) => {
-  await fs.rename(tempDir, path.join("public", "books", originalname));
+  await fs.rename("temp/cover.jpg", path.join("public", "books", "cover.jpg"));
 });
 app.listen(3000, () => console.log("Listen to port: 3000"));
