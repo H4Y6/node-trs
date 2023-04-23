@@ -8,7 +8,29 @@
   </head>
 
   <body>
-    <form id="book-add-form" enctype="multipart/form-data" action="">
+    <form id="book-add-form" enctype="multipart/form-data">
+      <input type="file" multiple name="cover" />
+      <input type="text" name="name" placeholder="Book name" />
+      <button type="s">Add</button>
+    </form>
+
+    <script>
+      const bookAddForm = document.getElementById("book-add-form");
+      bookAddForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const title = this.elements.name.value;
+        const files = this.elements.cover.files;
+        console.log(title, files);
+
+        const data = new FormData();
+        // data.append(title);
+        // data.append(files[0]);
+        data.append("name", this.elements.name.value);
+        data.append("files", this.elements.cover.files[0]);
+      });
+    </script>
+
+    <!-- <form id="book-add-form" enctype="multipart/form-data" action="">
       <input name="cover" type="file" multiple />
       <input type="text" name="name" placeholder="Book name" />
       <button type="submit">Add</button>
@@ -24,7 +46,7 @@
         data.append("name", this.elements.name.value);
         data.append("cover", this.elements.cover.files[0]);
       });
-    </script>
+    </script> -->
 
     <!-- <form id="book-add-form" action="" enctype="multipart/form-data">
       <input type="file" multiple name="cover" id="" />
