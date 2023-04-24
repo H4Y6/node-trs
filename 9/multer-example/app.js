@@ -23,7 +23,7 @@ const upload = multer({
   storage: multerConfig,
 });
 
-const books = [];
+let books = [];
 
 const booksDir = path.join("public", "books");
 
@@ -43,7 +43,7 @@ app.delete("/api/books/:id", async (req, res) => {
 });
 
 app.delete("/api/books", async (req, res) => {
-  const books = [];
+  books = [];
   res.json("All books deleted");
 });
 
