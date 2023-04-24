@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form id="book-add-form" enctype="multipart/form-data">
+      <input type="file" multiple name="cover" />
+      <input type="text" name="name" placeholder="Book name" />
+      <button type="s">Add</button>
+    </form>
+
+    <script>
+      const bookAddForm = document.getElementById("book-add-form");
+      bookAddForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const title = this.elements.name.value;
+        const files = this.elements.cover.files;
+        console.log(title, files);
+
+        const data = new FormData();
+        // data.append(title);
+        // data.append(files[0]);
+        data.append("name", this.elements.name.value);
+        data.append("files", this.elements.cover.files[0]);
+      });
+    </script>
+
+    <!-- <form id="book-add-form" enctype="multipart/form-data" action="">
+      <input name="cover" type="file" multiple />
+      <input type="text" name="name" placeholder="Book name" />
+      <button type="submit">Add</button>
+    </form>
+
+    <script>
+      const bookAddForm = document.getElementById("book-add-form");
+      bookAddForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        console.log(this.elements.name.value);
+        console.log(this.elements.cover.files);
+        const data = new FormData();
+        data.append("name", this.elements.name.value);
+        data.append("cover", this.elements.cover.files[0]);
+      });
+    </script> -->
+
+    <!-- <form id="book-add-form" action="" enctype="multipart/form-data">
+      <input type="file" multiple name="cover" id="" />
+      <input type="text" name="name" placeholder="Book name" />
+      <button type="submit">Add</button>
+    </form>
+
+    <script>
+      const bookAddForm = document.getElementById("book-add-form");
+      bookAddForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const data = new FormData();
+        data.append("name", this.elements.name.value);
+        data.append("cover", this.elements.cover.files[0]);
+
+        console.log(this.elements.name.value);
+        console.log(this.elements.cover.files);
+      });
+    </script> -->
+
+    <!-- <form id="book-add-form" action="" enctype="multipart/form-data">
+        <input name="cover" type="file" multiple>
+        <input type="text" name="name" placeholder="Book name">
+        <button>Добавить</button>
+    </form>
+
+    <script>
+        const bookAddForm = document.getElementById("book-add-form");
+        bookAddForm.addEventListener("submit", function(e){
+            e.preventDefault();
+            const data = new FormData();
+            data.append("name", this.elements.name.value);
+            data.append("cover", this.elements.cover.files[0])
+        })
+    </script> -->
+  </body>
+</html>
