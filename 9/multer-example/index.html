@@ -6,5 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <form id="book-add-form" enctype="multipart/form-data" action="">
+      <input type="file" multiple name="cover" />
+      <input type="text" name="name" placeholder="Book name" />
+      <button type="submit">Add</button>
+    </form>
+    <script>
+      const bookAddForm = document.getElementById("book-add-form");
+      bookAddForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const data = new FormData();
+        data.append(this.elements.name.value);
+        data.append(this.elements.cover.files[0]);
+      });
+    </script>
+  </body>
 </html>
