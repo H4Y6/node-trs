@@ -31,9 +31,20 @@ app.get("/api/books", async (req, res) => {
   res.json(books);
 });
 
-app.delete("/api/books", (req, res) => {
+app.delete("/api/books/:id", async (req, res) => {
+  const { id } = req.params;
+  const i = books.findIndex((b) => b.id === id);
+  if (i === -1) {
+    return null;
+  }
+  [dele] = books.splice(i, 1);
+  res.json(dele);
+  // res.status(204).send();
+});
+
+app.delete("/api/books", async (req, res) => {
   const books = [];
-  res.json("Books deleted");
+  res.json("All books deleted");
 });
 
 app.post("/api/books", upload.single("cover"), async (req, res) => {
