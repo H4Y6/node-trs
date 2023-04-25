@@ -27,6 +27,10 @@ const upload = multer({ storage: multerConfig });
 
 const booksDir = path.join(__dirname, "public", "books");
 
+app.get("/api/books", async (req, res) => {
+  res.json(books);
+});
+
 app.post("/api/books", upload.single("cover"), async (req, res) => {
   try {
     const { path: tempPath, originalname } = req.file;
