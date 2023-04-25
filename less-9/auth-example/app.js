@@ -1,31 +1,31 @@
 const express = require("express");
-const logger = require("morgan");
 const cors = require("cors");
-require("dotenv").config();
+const multer = require("multer");
+const path = require("path");
 
 global.basedir = __dirname;
 
-const booksRouter = require("./routes/api/books");
-const authRouter = require("./routes/api/auth");
-
 const app = express();
 
-const formatsLogger = app.get("env") === "development" ? "dev" : "short";
-
-app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/books", booksRouter);
-app.use("/api/auth", authRouter);
+const avatarsDir = path.join(__dirname, "temp");
 
-app.use((req, res) => {
-  res.status(404).json({ message: "Not found" });
+const multerConfig = multer.diskStorage({
+  destination: avatarsDir,
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
 });
 
-app.use((err, req, res, next) => {
-  const { status = 500, message = "Server error" } = err;
-  res.status(status).json({ message });
+const upload = multer({ storage: multerConfig });
+
+app.post("/api/books", upload.single("cover"), (req, res) => {
+  console.log(req.body);
+  console.log(req.file);
 });
 
-module.exports = app;
+app.listen(3000, () => {
+  console.log("Listen to port: 3000");
+});
