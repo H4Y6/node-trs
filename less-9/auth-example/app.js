@@ -31,7 +31,7 @@ app.post("/api/books", upload.single("cover"), async (req, res) => {
   const { path: tempPath, originalname } = req.file;
   const uploadPath = path.join(booksDir, originalname);
   await fs.rename(tempPath, uploadPath);
-  const cover = uploadPath;
+  const cover = path.join("public", "books", originalname);
   const newBook = { name: req.body.name, cover, id: nanoid() };
   res.status(201).json(newBook);
 });
