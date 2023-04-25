@@ -28,13 +28,18 @@ const upload = multer({ storage: multerConfig });
 const booksDir = path.join(__dirname, "public", "books");
 
 app.post("/api/books", upload.single("cover"), async (req, res) => {
-  const { path: tempPath, originalname } = req.file;
-  const uploadPath = path.join(booksDir, originalname);
-  await fs.rename(tempPath, uploadPath);
-  const cover = path.join("public", "books", originalname);
-  const newBook = { name: req.body.name, cover, id: nanoid() };
-  books.push(newBook);
-  res.status(201).json(newBook);
+  try {
+    const { path: tempPath, originalname } = req.file;
+    const uploadPath = path.join(booksDir, originalname);
+    await fs.rename(tempPath, uploadPath);
+    const cover = path.join("public", "books", originalname);
+    const newBook = { name: req.body.name, cover, id: nanoid() };
+    books.push(newBook);
+    res.status(201).json(newBook);
+  } catch (error) {
+    await fs.unlink(req.file.path);
+    throw error;
+  }
 });
 
 app.listen(3000, () => {
