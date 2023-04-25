@@ -3,10 +3,8 @@ const express = require("express");
 const { basedir } = global;
 
 const ctrl = require(`${basedir}/controllers/books`);
-
-const { auth } = require(`${basedir}/middlewares`);
-
 const { ctrlWrapper } = require(`${basedir}/helpers`);
+const { auth } = require(`${basedir}/middlewares`);
 
 const router = express.Router();
 
