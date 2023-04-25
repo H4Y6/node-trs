@@ -1,13 +1,13 @@
-const { Book, schemas } = require("../../models/books");
-
-const { createError } = require("../../helpers");
+const { basedir } = global;
+const { Book, schemas } = require(`${basedir}/models/books`);
+const { createError } = require(`${basedir}/helpers`);
 
 const add = async (req, res) => {
   const { error } = schemas.add.validate(req.body);
   if (error) {
     throw createError(400, error.message);
   }
-  const { _id: owner } = req.user;
+  const { id: owner } = req.user;
   const result = await Book.create({ ...req.body, owner });
   res.status(201).json(result);
 };
