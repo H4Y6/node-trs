@@ -12,8 +12,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const books = [];
-
 const tempDir = path.join(__dirname, "temp");
 
 const multerConfig = multer.diskStorage({
@@ -22,6 +20,8 @@ const multerConfig = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
+
+const books = [];
 
 const upload = multer({ storage: multerConfig });
 
