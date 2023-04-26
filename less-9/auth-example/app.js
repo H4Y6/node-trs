@@ -1,51 +1,32 @@
 const express = require("express");
+const logger = require("morgan");
 const cors = require("cors");
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs/promises");
-const { nanoid } = require("nanoid");
+require("dotenv").config();
 
 global.basedir = __dirname;
 
+const authRouter = require("./routes/api/auth");
+const booksRouter = require("./routes/api/books");
+
 const app = express();
 
+const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+
+app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
-const tempDir = path.join(__dirname, "temp");
+app.use("/api/auth", authRouter);
+app.use("/api/books", booksRouter);
 
-const multerConfig = multer.diskStorage({
-  destination: tempDir,
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
+app.use((req, res) => {
+  res.status(404).json({ message: "Not found" });
 });
 
-const books = [];
-
-const upload = multer({ storage: multerConfig });
-
-const booksDir = path.join(__dirname, "public", "books");
-
-app.get("/api/books", async (req, res) => {
-  res.json(books);
+app.use((err, req, res, next) => {
+  const { status = 500, message = "Server error" } = err;
+  res.status(status).json({ message });
 });
 
-app.post("/api/books", upload.single("cover"), async (req, res) => {
-  try {
-    const { path: tempPath, originalname } = req.file;
-    const uploadPath = path.join(booksDir, originalname);
-    await fs.rename(tempPath, uploadPath);
-    const cover = path.join("public", "books", originalname);
-    const newBook = { name: req.body.name, cover, id: nanoid() };
-    books.push(newBook);
-    res.status(201).json(newBook);
-  } catch (error) {
-    await fs.unlink(req.file.path);
-    throw error;
-  }
-});
-
-app.listen(3000, () => {
-  console.log("Listen to port: 3000");
-});
+module.exports = app;
