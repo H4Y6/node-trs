@@ -13,7 +13,6 @@ const login = async (req, res) => {
   }
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  console.log(email, user);
   if (!user) {
     throw createError(401, "Wrong email.");
   }
