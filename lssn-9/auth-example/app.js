@@ -23,6 +23,7 @@ app.use(async (req, _, next) => {
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
 app.use("/api/books", booksRouter);
 app.use("/api/auth", authRouter);
