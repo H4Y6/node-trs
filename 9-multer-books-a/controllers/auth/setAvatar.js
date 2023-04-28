@@ -5,7 +5,7 @@ const { basedir } = global;
 
 const { User } = require(`${basedir}/models/users`);
 
-const avatarsDir = path.join(basedir, "avatars");
+const avatarsDir = path.join(basedir, "public", "avatars");
 
 const setAvatar = async (req, res) => {
   try {
