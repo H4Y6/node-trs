@@ -2,6 +2,7 @@ const { basedir } = global;
 const { createError } = require(`${basedir}/helpers`);
 const { User, schemas } = require(`${basedir}/models/users`);
 const bcrypt = require("bcryptjs");
+const gravatar = require("gravatar");
 
 const register = async (req, res) => {
   const { error } = schemas.register.validate(req.body);
@@ -14,7 +15,12 @@ const register = async (req, res) => {
     throw createError(409, `Email ${email} exists`);
   }
   const hashPassword = await bcrypt.hash(password, 10);
-  const result = await User.create({ ...req.body, password: hashPassword });
+  const avatarURL = gravatar.url(email);
+  const result = await User.create({
+    ...req.body,
+    password: hashPassword,
+    avatarURL,
+  });
   res.json({ name: result.name, email: result.email });
 };
 
