@@ -11,5 +11,6 @@ router.post("/register", ctrlWrapper(ctrl.register));
 router.post("/login", ctrlWrapper(ctrl.login));
 router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
 router.get("/logout", auth, ctrlWrapper(ctrl.logout));
+router.paatch("/avatars", auth, ctrlWrapper(ctrl.setAvatar));
 
 module.exports = router;
