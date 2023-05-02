@@ -3,6 +3,7 @@ const fs = require("fs/promises");
 
 const { basedir } = global;
 
+const { manipulateImage } = require(`${basedir}/middlewares`);
 const { User } = require(`${basedir}/models/users`);
 
 const avatarsDir = path.join(basedir, "public", "avatars");
@@ -11,6 +12,7 @@ const setAvatar = async (req, res) => {
   try {
     const { _id } = req.user;
     const { path: tempPath, originalname } = req.file;
+    await manipulateImage(tempPath);
     const [extension] = originalname.split(".").reverse();
     const newName = `${_id}.${extension}`;
     const uploadPath = path.join(avatarsDir, newName);
