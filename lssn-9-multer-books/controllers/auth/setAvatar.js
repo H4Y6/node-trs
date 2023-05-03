@@ -12,7 +12,7 @@ const manipulate = (tempPath) => {
       return img
         .resize(250, 250) // resize
         .quality(69) // set JPEG quality
-        .write("pict.jpg"); // save
+        .write("temp/pict.jpg"); // save
     })
     .catch((err) => {
       console.error(err);
@@ -27,7 +27,8 @@ const setAvatar = async (req, res) => {
     const [extension] = originalname.split(".").reverse();
     const newName = `${_id}.${extension}`;
     const uploadPath = patch.join(avatarsDir, newName);
-    await fs.rename("pict.jpg", uploadPath);
+    await fs.rename("temp/pict.jpg", uploadPath);
+    await fs.unlink(req.file.path);
     const avatarURL = patch.join("avatars", newName);
     await User.findByIdAndUpdate(_id, { avatarURL });
     res.json({ avatarURL });
