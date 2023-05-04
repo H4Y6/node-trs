@@ -13,7 +13,7 @@ router.get("/logout", auth, ctrlWrapper(ctrl.logout));
 router.patch(
   "/avatars",
   auth,
-  upload.single("avatars"),
+  upload.single("avatar"),
   ctrlWrapper(ctrl.setAvatar)
 );
 
