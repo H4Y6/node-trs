@@ -12,7 +12,7 @@ const setAvatar = async (req, res) => {
   try {
     const { _id } = req.user;
     const { path: tempPath, originalname } = req.file;
-    manipulateImage(tempPath);
+    await manipulateImage(tempPath);
     const [extension] = originalname.split(".").reverse();
     const newName = `${_id}.${extension}`;
     const uploadPath = path.join(avatarsDir, newName);
