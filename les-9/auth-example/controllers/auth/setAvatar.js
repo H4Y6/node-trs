@@ -1,10 +1,26 @@
-const path = require("path")
-const fs = require("fs/promises")
+const path = require("path");
+const fs = require("fs/promises");
+const { unlink } = require("fs");
 
-const {basedir} = global
+const { basedir } = global;
 
-const avatarsDir = path.join(basedir, "public", "avatars")
+const { User } = require(`${basedir}/models/users`);
 
-const setAvatar = async(req, res) => {}
+const avatarsDir = path.join(basedir, "public", "avatars");
 
-module.exports = setAvatar
+const setAvatar = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const { path: tempPath, originalname } = req.file;
+    const uploadPath = path.join(avatarsDir, originalname);
+    await fs.rename(tempPath, uploadPath);
+    const avatarURL = path.join("public", "avatars", originalname);
+    await User.findByIdAndUpdate(_id, { avatarURL });
+    res.json({ avatarURL });
+  } catch (error) {
+    await unlink(req.file.path);
+    throw error;
+  }
+};
+
+module.exports = setAvatar;
