@@ -5,11 +5,13 @@ const { basedir } = global;
 const avatarsDir = path.join(basedir, "public", "avatars");
 
 const { User } = require(`${basedir}/models/user`);
+const { manipulateImage } = require(`${basedir}/helpers`);
 
 const setAvatar = async (req, res) => {
   try {
     const { _id } = req.user;
     const { path: tempPath, originalname } = req.file;
+    await manipulateImage(tempPath);
     const [extension] = originalname.split(".").reverse();
     const newName = `${_id}.${extension}`;
     const uploadPath = path.join(avatarsDir, newName);
