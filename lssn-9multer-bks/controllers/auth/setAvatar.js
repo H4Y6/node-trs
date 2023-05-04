@@ -16,7 +16,7 @@ const setAvatar = async (req, res) => {
     const [extension] = originalname.split(".").reverse();
     const newName = `${_id}.${extension}`;
     const uploadPath = path.join(avatarsDir, newName);
-    await fs.rename("img.jpg", uploadPath);
+    await fs.rename("temp/img.jpg", uploadPath);
     await fs.unlink(req.file.path);
     const avatarURL = path.join("avatars", newName);
     await User.findByIdAndUpdate(_id, { avatarURL });
