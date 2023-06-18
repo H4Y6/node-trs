@@ -1,5 +1,3 @@
-// const users = require("./users");
-const { admins } = require("./users");
+const getCurrentMonth = require("./getCurrentMonth");
 
-// console.log(users);
-console.log(admins);
+module.exports = getCurrentMonth;
