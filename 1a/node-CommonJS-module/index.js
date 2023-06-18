@@ -4,8 +4,7 @@ const admins = users.admins;
 // const { admins } = require("./users");
 
 // const thisMonth = require("./date").getCurrentMonth();
-const { getCurrentMonth } = require("./date");
-const currentMonth = getCurrentMonth();
+const currentMonth = require("./date").getCurrentMonth();
 
 console.log(users);
 console.log(admins);
