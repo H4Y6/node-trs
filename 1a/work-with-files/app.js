@@ -36,13 +36,27 @@ const fileOperation = async ({ filePath, action, data }) => {
 };
 
 // fileOperation({ filePath: "./files/file.txt", action: "read" });
+
 // fileOperation({
 //   filePath: "./files/file.txt",
 //   action: "add",
 //   data: "\nHello!",
 // });
-fileOperation({
-  filePath: "./files/file.txt",
-  action: "replace",
-  data: "Good day!",
-});
+
+// fileOperation({
+//   filePath: "./files/file2.txt",
+//   action: "add",
+//   data: "\nHello!",
+// });
+
+// fileOperation({
+//   filePath: "./files/file.txt",
+//   action: "replace",
+//   data: "Good day!",
+// });
+
+// fileOperation({
+//   filePath: "./files/file3.txt",
+//   action: "replace",
+//   data: "Good day!",
+// });
