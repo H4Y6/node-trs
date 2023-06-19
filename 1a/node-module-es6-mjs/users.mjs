@@ -3,4 +3,4 @@ const clients = ["Ann", "Mary", "Helen"];
 
 const users = { admins, clients };
 
-module.exports = users;
+export default users;
