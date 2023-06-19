@@ -20,9 +20,8 @@ const fs = require("fs/promises");
 const fileOperation = async ({ filePath, action, data }) => {
   switch (action) {
     case "read":
-      const data = await fs.readFile(filePath);
-      const text = data.toString();
-      console.log(text);
+      const data = await fs.readFile(filePath, "utf-8");
+      console.log(data);
       break;
 
     default:
