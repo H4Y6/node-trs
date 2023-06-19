@@ -21,7 +21,8 @@ const fileOperation = async ({ filePath, action, data }) => {
   switch (action) {
     case "read":
       const data = await fs.readFile(filePath);
-      console.log(data);
+      const text = data.toString();
+      console.log(text);
       break;
 
     default:
