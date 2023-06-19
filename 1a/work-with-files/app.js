@@ -4,11 +4,29 @@
 //   console.log(error);
 //   console.log(data);
 // });
+// ---------------------------------------
 
-const { error } = require("console");
+// const { error } = require("console");
+// const fs = require("fs/promises");
+// // const fs = require("fs").promises;
+
+// fs.readFile("./files/file.txt")
+//   .then((data) => console.log(data.toString()))
+//   .catch((error) => console.log(error));
+// ---------------------------------------
+
 const fs = require("fs/promises");
-// const fs = require("fs").promises;
 
-fs.readFile("./files/file.txt")
-  .then((data) => console.log(data.toString()))
-  .catch((error) => console.log(error));
+const fileOperation = async ({ filePath, action, data }) => {
+  switch (action) {
+    case "read":
+      const data = await fs.readFile(filePath);
+      console.log(data);
+      break;
+
+    default:
+      break;
+  }
+};
+
+fileOperation({ filePath: "./files/file.txt", action: "read" });
