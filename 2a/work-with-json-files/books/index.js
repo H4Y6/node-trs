@@ -32,9 +32,9 @@ const add = async (title, author) => {
 const updateById = async (id, title, author) => {
   const books = await getAll();
   const idx = books.findIndex((b) => b.id === id);
-  // if (idx === -1) {
-  //   return null;
-  // }
+  if (idx === -1) {
+    return null;
+  }
   books[idx] = { id, title, author };
   await updateBooks(books);
   return books[idx];
