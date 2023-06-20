@@ -34,7 +34,15 @@ const invokeAction = async ({ action, id, title, author }) => {
 //   title: "Blacea",
 //   author: "Ben Piles",
 // });
-invokeAction({
-  action: "deleteById",
-  id: "AhUTcPJRLRRqQS9GMufLw",
-});
+// invokeAction({
+//   action: "deleteById",
+//   id: "AhUTcPJRLRRqQS9GMufLw",
+// });
+
+// console.log(process.argv.slice(2));
+
+const actionIndex = process.argv.indexOf("--action");
+if (actionIndex !== -1) {
+  const action = process.argv[actionIndex + 1];
+  invokeAction({ action });
+}
