@@ -18,15 +18,23 @@ const invokeAction = async ({ action, id, title, author }) => {
       const updateBook = await books.updateById(id, title, author);
       console.log(updateBook);
       break;
+    case "deleteById":
+      const deleBook = await books.deleteById(id);
+      console.log(deleBook);
+      break;
   }
 };
 
 // invokeAction({ action: "getAll" });
 // invokeAction({ action: "getById", id: "CTHE0f1kkWwqS5sL2tI8_" });
 // invokeAction({ action: "add", title: "Sea", author: "Ben Piles" });
+// invokeAction({
+//   action: "updateById",
+//   id: "AhUTcPJRLRRqQS9GMufLw",
+//   title: "Blacea",
+//   author: "Ben Piles",
+// });
 invokeAction({
-  action: "updateById",
+  action: "deleteById",
   id: "AhUTcPJRLRRqQS9GMufLw",
-  title: "Blacea",
-  author: "Ben Piles",
 });
