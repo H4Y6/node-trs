@@ -28,15 +28,15 @@ const invokeAction = async ({ action, id, title, author }) => {
   }
 };
 
-const arr = hideBin(process.argv);
-
+// const arr = hideBin(process.argv);
 // const arr2 = process.argv.slice(2);
 // console.log(arr);
 // console.log(arr2);
 
-const { argv } = yargs(arr);
-
+// const { argv } = yargs(arr);
 // const { argv } = yargs(arr2);
 // console.log(argv);
 
+const arr = hideBin(process.argv);
+const { argv } = yargs(arr);
 invokeAction(argv);
