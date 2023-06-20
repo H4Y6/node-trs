@@ -1,5 +1,4 @@
-const yargs = require("yargs");
-const { hideBin } = require("yargs/helpers");
+const { program } = require("commander");
 
 const books = require("./books");
 
@@ -28,15 +27,13 @@ const invokeAction = async ({ action, id, title, author }) => {
   }
 };
 
-// const arr = hideBin(process.argv);
-// const arr2 = process.argv.slice(2);
-// console.log(arr);
-// console.log(arr2);
+program
+  .option("-a,--action <type>")
+  .option("-i,--id <type>")
+  .option("-t,--title <type>")
+  .option("-at,--author <type>");
 
-// const { argv } = yargs(arr);
-// const { argv } = yargs(arr2);
-// console.log(argv);
-
-const arr = hideBin(process.argv);
-const { argv } = yargs(arr);
-invokeAction(argv);
+program.parse(process.argv);
+const options = program.opts();
+// console.log(options);
+invokeAction(options);
