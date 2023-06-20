@@ -1,3 +1,6 @@
+const yargs = require("yargs");
+const { hideBin } = require("yargs/helpers");
+
 const books = require("./books");
 
 const invokeAction = async ({ action, id, title, author }) => {
@@ -24,3 +27,16 @@ const invokeAction = async ({ action, id, title, author }) => {
       break;
   }
 };
+
+const arr = hideBin(process.argv);
+
+// const arr2 = process.argv.slice(2);
+// console.log(arr);
+// console.log(arr2);
+
+const { argv } = yargs(arr);
+
+// const { argv } = yargs(arr2);
+// console.log(argv);
+
+invokeAction(argv);
