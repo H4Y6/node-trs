@@ -1,9 +1,12 @@
 const express = require("express");
 const fs = require("fs/promises");
+const cors = require("cors");
 
 const books = require("./books");
 
 const app = express();
+
+app.use(cors());
 
 app.use(async (req, res, next) => {
   const { method, url } = req;
