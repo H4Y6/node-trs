@@ -49,8 +49,8 @@ const app = express();
 app.use(cors());
 
 app.use(async (req, res, next) => {
-  const currentTime = new Date().toLocaleString();
-  // const currentTime = moment().format("DD.MM.YYYY HH.mm.ss");
+  // const currentTime = new Date().toLocaleString();
+  const currentTime = moment().format("DD.MM.YYYY HH.mm.ss");
   const { method, url } = req;
   await fs.appendFile("server.log", `${currentTime} ${method} ${url}\n`);
   next();
@@ -58,11 +58,6 @@ app.use(async (req, res, next) => {
 
 // app.use((req, res, next) => {
 //   console.log("first middleware");
-//   next();
-// });
-
-// app.use((req, res, next) => {
-//   console.log("second middleware");
 //   next();
 // });
 
