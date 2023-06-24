@@ -22,7 +22,8 @@ routes.get("/:id", async (req, res, next) => {
     }
     res.json(result);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    // res.status(500).json({ message: "Server error" });
+    next(error);
   }
 });
 
