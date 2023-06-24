@@ -52,7 +52,7 @@ app.use(async (req, res, next) => {
   // const currentTime = new Date().toLocaleString();
   const currentTime = moment().format("DD.MM.YYYY HH.mm.ss");
   const { method, url } = req;
-  await fs.appendFile("server.log", `${currentTime} ${method} ${url}\n`);
+  await fs.appendFile("server.log", ` ${method} ${url} ${currentTime}\n`);
   next();
 });
 
