@@ -24,7 +24,7 @@ routes.get("/:id", async (req, res, next) => {
       //   const error = new Error("Not found");
       //   error.status = 404;
       //   throw error;
-      throw createError(404, "Not found");
+      throw createError(404);
     }
     res.json(result);
   } catch (error) {
