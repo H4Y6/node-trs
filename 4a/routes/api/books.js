@@ -4,18 +4,18 @@ const { createError } = require("../../helpers");
 
 const books = require("../../models/books");
 
-const routes = express.Router();
+const router = express.Router();
 
-routes.get("/", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const result = await books.getAll();
     res.json(result);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    next(error);
   }
 });
 
-routes.get("/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await books.getById(id);
@@ -33,4 +33,13 @@ routes.get("/:id", async (req, res, next) => {
   }
 });
 
-module.exports = routes;
+router.post("/", async (req, res, next) => {
+  try {
+    const result = await books.add(req.body);
+    res.status(201).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+module.exports = router;
