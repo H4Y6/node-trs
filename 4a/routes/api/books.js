@@ -13,4 +13,17 @@ routes.get("/", async (req, res, next) => {
   }
 });
 
+routes.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await books.getById(id);
+    if (!result) {
+      return res.status(404).json({ message: "Not found" });
+    }
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 module.exports = routes;
