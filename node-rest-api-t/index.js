@@ -1,4 +1,4 @@
-const contacts = require("./contacts");
+const contacts = require("./models/contacts");
 
 // const argv = require("yargs").argv;
 
