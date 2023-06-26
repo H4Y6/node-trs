@@ -50,4 +50,12 @@ const addContact = async (name, email, phone) => {
   return newContact;
 };
 
-module.exports = { listContacts, getContactById, removeContact, addContact };
+const updateContact = async ({ contactId, body }) => {};
+
+module.exports = {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+  updateContact,
+};
