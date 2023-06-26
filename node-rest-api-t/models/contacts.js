@@ -50,7 +50,7 @@ const addContact = async (name, email, phone) => {
   return newContact;
 };
 
-const updateContact = async ({ contactId, body }) => {};
+const updateContact = async (contactId, body) => {};
 
 module.exports = {
   listContacts,
