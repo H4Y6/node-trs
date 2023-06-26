@@ -4,6 +4,7 @@
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
+    "start": "node index",
     "start:dev": "nodemon index",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js"
