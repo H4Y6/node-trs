@@ -6,7 +6,6 @@ const { createError } = require("../../helpers");
 const Joi = require("joi");
 
 const emailRegexp = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
-// /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const contactsAddSchema = Joi.object({
   name: Joi.string().required(),
