@@ -29,9 +29,9 @@ const removeContact = async (contactId) => {
   if (i === -1) {
     return null;
   }
-  const [removeContact] = contacts.splice(i, 1);
+  const [removedContact] = contacts.splice(i, 1);
   await updateContacts(contacts);
-  return removeContact;
+  return removedContact;
 };
 
 const addContact = async (body) => {
