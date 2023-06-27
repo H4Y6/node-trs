@@ -34,13 +34,11 @@ const removeContact = async (contactId) => {
   return removeContact;
 };
 
-const addContact = async (name, email, phone) => {
+const addContact = async (body) => {
   const contacts = await listContacts();
   const newContact = {
     id: nanoid(),
-    name,
-    email,
-    phone,
+    ...body,
   };
   contacts.push(newContact);
   await updateContacts(contacts);
