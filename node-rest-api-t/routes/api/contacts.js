@@ -2,6 +2,7 @@ const express = require("express");
 
 const contacts = require("../../models/contacts");
 const { createError } = require("../../helpers");
+const { nanoid } = require("nanoid");
 
 const router = express.Router();
 
@@ -19,11 +20,6 @@ router.get("/:contactId", async (req, res, next) => {
     const { contactId } = req.params;
     const result = await contacts.getContactById(contactId);
     if (!result) {
-      // return res.status(404).json({ message: "Not found" });
-      // const error = new Error("Not found");
-      // error.status = 404;
-      // throw error;
-      // throw createError(404, "Not found");
       throw createError(404);
     }
     res.json(result);
@@ -33,7 +29,12 @@ router.get("/:contactId", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  res.json({ message: "template message" });
+  try {
+    const result = await contacts.addContact(req.body);
+    res.status(201).json(result);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.delete("/:contactId", async (req, res, next) => {
