@@ -1,6 +1,7 @@
 const express = require("express");
 
 const contacts = require("../../models/contacts");
+const { createError } = require("../../helpers");
 
 const router = express.Router();
 
@@ -19,9 +20,11 @@ router.get("/:contactId", async (req, res, next) => {
     const result = await contacts.getContactById(contactId);
     if (!result) {
       // return res.status(404).json({ message: "Not found" });
-      const error = new Error("Not found");
-      error.status = 404;
-      throw error;
+      // const error = new Error("Not found");
+      // error.status = 404;
+      // throw error;
+      // throw createError(404, "Not found");
+      throw createError(404);
     }
     res.json(result);
   } catch (error) {
