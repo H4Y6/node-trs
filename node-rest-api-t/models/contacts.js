@@ -50,7 +50,16 @@ const addContact = async (name, email, phone) => {
   return newContact;
 };
 
-const updateContact = async (contactId, body) => {};
+const updateContact = async (contactId, body) => {
+  const contacts = await listContacts();
+  const i = contacts.findIndex((c) => c.id === contactId);
+  if (i === -1) {
+    return null;
+  }
+  contacts[i] = { id: contactId, ...body };
+  await updateContacts(contacts);
+  return contacts[i];
+};
 
 module.exports = {
   listContacts,
