@@ -5,8 +5,8 @@ const { createError } = require("../../helpers");
 
 const Joi = require("joi");
 
-const emailRegexp =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const emailRegexp = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
+// /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const contactsAddSchema = Joi.object({
   name: Joi.string().required(),
@@ -52,7 +52,16 @@ router.post("/", async (req, res, next) => {
 });
 
 router.delete("/:contactId", async (req, res, next) => {
-  res.json({ message: "template message" });
+  try {
+    const { contactId } = req.params;
+    const result = await contacts.removeContact(contactId);
+    if (!result) {
+      throw createError(404);
+    }
+    res.json({ message: "Contact`s deleted" });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.put("/:contactId", async (req, res, next) => {
