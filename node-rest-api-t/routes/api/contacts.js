@@ -1,7 +1,7 @@
 const express = require("express");
-
-const contacts = require("../../models/contacts");
-const { createError } = require("../../helpers");
+const { basedir } = global;
+const contacts = require(`${basedir}/models/contacts`);
+const { createError } = require(`${basedir}/helpers`);
 
 const Joi = require("joi");
 
