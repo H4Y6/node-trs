@@ -1,6 +1,6 @@
 const express = require("express");
-
 const { basedir } = global;
+const { createError } = require(`${basedir}/helpers`);
 
 const contacts = require(`${basedir}/models/contacts`);
 
@@ -20,9 +20,7 @@ router.get("/:id", async (req, res, next) => {
     const { id } = req.params;
     const result = await contacts.getContactById(id);
     if (!result) {
-      const error = new Error("Not found");
-      error.status = 404;
-      throw error;
+      throw createError(404, "Not found");
     }
     res.json(result);
   } catch (error) {
