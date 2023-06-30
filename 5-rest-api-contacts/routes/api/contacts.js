@@ -1,8 +1,16 @@
 const express = require("express");
+const Joi = require("joi");
 const { basedir } = global;
 const { createError } = require(`${basedir}/helpers`);
 
 const contacts = require(`${basedir}/models/contacts`);
+
+const emailRegexp = /\w+\@\w+\./;
+const contactsAddSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().pattern(emailRegexp).required(),
+  phone: Joi.string().required(),
+});
 
 const router = express.Router();
 
@@ -23,6 +31,19 @@ router.get("/:id", async (req, res, next) => {
       throw createError(404);
     }
     res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/", async (req, res, next) => {
+  try {
+    const { error } = contactsAddSchema.validate(req.body);
+    if (error) {
+      throw createError(400, error.message);
+    }
+    const result = await contacts.addContact(req.body);
+    res.status(201).json(result);
   } catch (error) {
     next(error);
   }
