@@ -18,8 +18,19 @@ async function getContactById(contactId) {
   return oneContact;
 }
 
+async function updateContacts(contacts) {
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+}
+
 async function removeContact(contactId) {
-  // ...твій код. Повертає об'єкт видаленого контакту. Повертає null, якщо контакт з таким id не знайдений.
+  const contacts = await listContacts();
+  const i = contacts.findIndex((c) => c.id === contactId);
+  if (i === -1) {
+    return null;
+  }
+  const [removedContact] = contacts.splice(i, 1);
+  await updateContacts(contacts);
+  return removedContact;
 }
 
 async function addContact(name, email, phone) {
