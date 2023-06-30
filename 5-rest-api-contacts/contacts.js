@@ -34,7 +34,11 @@ async function removeContact(contactId) {
 }
 
 async function addContact(name, email, phone) {
-  // ...твій код. Повертає об'єкт доданого контакту. Повертає null, якщо контакт з таким id не знайдений.
+  const contacts = await listContacts();
+  const newContact = { id: nanoid(), name, email, phone };
+  contacts.push(newContact);
+  await updateContacts(contacts);
+  return newContact;
 }
 
 module.exports = { listContacts, getContactById, removeContact, addContact };
