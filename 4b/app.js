@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const logger = require("morgan");
+require("dotenv").config();
+
 const booksRouter = require("./routes/api/books");
 
 const app = express();
@@ -17,12 +19,6 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  // app.use((err, _, res, __) => {
-  // const { status = 500, message = "Server error" } = err;
-  // res.status(status).json({ message });
-
-  // res.status(500).json({ message: err.message });
-
   const { status = 500, message = "Server error" } = err;
   res.status(status).json({ message });
 });
