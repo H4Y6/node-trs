@@ -7,11 +7,15 @@ const router = express.Router();
 
 const bookAddSchema = Joi.object({
   title: Joi.string().required(),
-  author: Joi.string().required(),
+  favorite: Joi.boolean(),
   genre: Joi.string().valueOf("fantastic", "love").required(),
   isbn: Joi.string()
     .pattern(/[0-9]{3}-[0-9]{1}-[0-9]{3}-[0-9]{5}-[0-9]{1}/)
     .required(),
+});
+
+const bookUpdateSchema = Joi.object({
+  favorite: Joi.boolean().required(),
 });
 
 router.get("/", async (req, res, next) => {
@@ -65,6 +69,23 @@ router.put("/:id", async (req, res, next) => {
       throw createError(404);
     }
     res.status(201).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.patch("/:id/favorite", async (req, res, next) => {
+  try {
+    const { error } = bookUpdateSchema.validate(req.body);
+    if (error) {
+      throw createError(400, error.message);
+    }
+    const { id } = req.params;
+    const result = await Book.findByIdAndUpdate(id, req.body, { new: true });
+    if (!result) {
+      throw createError(404);
+    }
+    res.json(result);
   } catch (error) {
     next(error);
   }
