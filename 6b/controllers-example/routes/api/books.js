@@ -1,23 +1,19 @@
 const express = require("express");
 
-const { basedir } = global;
-
-const ctrl = require(`${basedir}/controllers/books`);
-
-const { ctrlWrapper } = require(`${basedir}/helpers`);
+const ctrl = require("../../controllers/books");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(ctrl.getAll));
+router.get("/", ctrl.getAll);
 
-router.get("/:id", ctrlWrapper(ctrl.getById));
+router.get("/:id", ctrl.getById);
 
-router.post("/", ctrlWrapper(ctrl.add));
+router.post("/", ctrl.add);
 
-router.put("/:id", ctrlWrapper(ctrl.updateById));
+router.put("/:id", ctrl.updateById);
 
-router.delete("/:id", ctrlWrapper(ctrl.removeById));
+router.patch("/:id/favorite", ctrl.updateStatus);
 
-router.patch("/:id/favorite", ctrlWrapper(ctrl.updateFavorite));
+router.delete("/:id", ctrl.removeById);
 
 module.exports = router;
