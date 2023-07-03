@@ -12,7 +12,11 @@ const bookAddSchema = Joi.object({
   author: Joi.string().required(),
   genres: Joi.string().valueOf("fantastic", "love", " science").required(),
   isbn: Joi.string().pattern(isbnRegexp).required(),
-  favorite: Joi.boolean(),
+  favorite: Joi.boolean().default(false),
+});
+
+const bookUpdateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
 });
 
 const router = express.Router();
@@ -45,6 +49,50 @@ router.post("/", async (req, res, next) => {
     if (error) throw createError(400, error.message);
     const result = await Book.create(req.body);
     res.status(201).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/:id", async (req, res, next) => {
+  try {
+    const { error } = bookAddSchema.validate(req.body);
+    if (error) {
+      throw createError(400, error.message);
+    }
+    const { id } = req.params;
+    const result = await Book.findByIdAndUpdate(id, req.body, { new: true });
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.patch("/:id/favorite", async (req, res, next) => {
+  try {
+    const { error } = bookUpdateFavoriteSchema.validate(req.body);
+    if (error) {
+      throw createError(400, error.message);
+    }
+    const { id } = req.params;
+    const result = await Book.findByIdAndUpdate(id, req.body, { new: true });
+    if (!result) {
+      throw createError(404);
+    }
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await Book.findByIdAndRemove(id);
+    if (!result) {
+      throw createError(404);
+    }
+    res.json({ message: "Book`s deleted" });
   } catch (error) {
     next(error);
   }
