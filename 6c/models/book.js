@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-
+const Joi = require("joi");
 isbnRegexp = /^\d\d\d-\d-\d{3}-\d{5}-\d$/;
 
 const bookSchema = new Schema(
@@ -21,6 +21,20 @@ const bookSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
+const addSchema = Joi.object({
+  title: Joi.string().required(),
+  author: Joi.string().required(),
+  genres: Joi.string().valueOf("fantastic", "love", " science").required(),
+  isbn: Joi.string().pattern(isbnRegexp).required(),
+  favorite: Joi.boolean().default(false),
+});
+
+const updateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
+
+const schemas = { add: addSchema, updateFavorite: updateFavoriteSchema };
+
 const Book = model("book", bookSchema);
 
-module.exports = Book;
+module.exports = { Book, schemas };
