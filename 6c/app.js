@@ -1,10 +1,8 @@
-const mongoose = require("mongoose");
+const express = require("express");
+const cors = require("cors");
 
 require("dotenv").config();
 
-const { DB_HOST } = process.env;
+const app = express();
 
-mongoose
-  .connect(DB_HOST)
-  .then(console.log("DB connected"))
-  .catch((error) => error.message);
+module.exports = app;
