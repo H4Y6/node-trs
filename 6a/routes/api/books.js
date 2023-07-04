@@ -1,6 +1,6 @@
 const express = require("express");
-const { Book } = require("../../controllers/books");
-const ctrl = require("../../controllers/books");
+const { basedir } = global;
+const ctrl = require(`${basedir}/controllers/books`);
 
 const router = express.Router();
 
