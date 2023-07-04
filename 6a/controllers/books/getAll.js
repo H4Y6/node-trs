@@ -1,4 +1,6 @@
-const { Book } = require("../../models/book");
+const { basedir } = global;
+
+const { Book } = require(`${basedir}/models/book`);
 
 const getAll = async (req, res, next) => {
   try {
