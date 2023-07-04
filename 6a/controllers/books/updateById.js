@@ -2,17 +2,21 @@ const { basedir } = global;
 const { Book, schemas } = require(`${basedir}/models/book`);
 const { createError } = require(`${basedir}/helpers`);
 
-const add = async (req, res, next) => {
+const updateById = async (req, res, next) => {
   try {
     const { error } = schemas.add.validate(req.body);
     if (error) {
       throw createError(400, error.message);
     }
-    const result = await Book.create(req.body);
-    res.status(201).json(result);
+    const { id } = req.params;
+    const result = await Book.findByIdAndUpdate(id, req.body, { new: true });
+    if (!result) {
+      throw createError(404);
+    }
+    res.json(result);
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = add;
+module.exports = updateById;
