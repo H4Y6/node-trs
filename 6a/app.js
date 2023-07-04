@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+
+global.basedir = __dirname;
+
 const logger = require("morgan");
 
 const booksRouter = require("./routes/api/books");
@@ -19,7 +22,7 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: err.message });
+  res.status(500).json({ message });
 });
 
 module.exports = app;
