@@ -1,15 +1,9 @@
 const express = require("express");
-const { Book } = require("../../models/book");
+
+const ctrl = require("../../controllers/books");
 
 const router = express.Router();
 
-router.get("/", async (req, res, next) => {
-  try {
-    const result = await Book.find({}, "-createdAt -updatedAt");
-    res.json(result);
-  } catch (error) {
-    next(error);
-  }
-});
+router.get("/", ctrl.getAll);
 
 module.exports = router;
