@@ -1,6 +1,5 @@
 const { basedir } = global;
-
-const { Book } = require("../../models/book");
+const { Book } = require(`${basedir}/models/book`);
 
 const getById = async (req, res, next) => {
   const { id } = req.params;
