@@ -13,7 +13,6 @@ const updateById = async (req, res) => {
     throw createError(404);
   }
   res.json(result);
-  next(error);
 };
 
 module.exports = updateById;
