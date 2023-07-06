@@ -1,14 +1,13 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
-const emailRegexp = /\w+@\w+\.\w{2,3}/;
+const emailRegexp = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
 const userSchema = new Schema(
   {
     name: { type: String, required: true },
-    email: { type: String, match: emailRegexp, unique: true, required: true },
+    email: { type: String, match: emailRegexp, required: true, unique: true },
     password: { type: String, minlength: 6, required: true },
-    token: String,
   },
   { versionKey: false, timestamps: true }
 );
