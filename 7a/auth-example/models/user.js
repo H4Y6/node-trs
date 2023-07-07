@@ -8,6 +8,7 @@ const userSchema = new Schema(
     name: { type: String, required: true },
     email: { type: String, match: emailRegexp, required: true, unique: true },
     password: { type: String, minlength: 6, required: true },
+    token: String,
   },
   { versionKey: false, timestamps: true }
 );

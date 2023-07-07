@@ -1,6 +1,6 @@
 const { Book, schemas } = require("../../models/books");
 
-const createError = require("../../helpers");
+const { createError } = require("../../helpers");
 
 const add = async (req, res) => {
   const { error } = schemas.add.validate(req.body);
