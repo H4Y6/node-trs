@@ -12,7 +12,7 @@ const register = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (user) {
-    throw createError(409, `${(email, password)} already exist`);
+    throw createError(409, `${email} already exist`);
   }
   const hashePassword = await bcrypt.hash(password, 10);
   const result = await User.create({ ...req.body, password: hashePassword });
