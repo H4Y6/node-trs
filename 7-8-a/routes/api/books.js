@@ -8,16 +8,16 @@ const ctrl = require(`${basedir}/controllers/books`);
 
 const router = express.Router();
 
-router.get("/", ctWr(ctrl.getAll));
+router.get("/", ctrlWrapper(ctrl.getAll));
 
-router.get("/:id", ctWr(ctrl.getById));
+router.get("/:id", ctrlWrapper(ctrl.getById));
 
-router.post("/", ctWr(ctrl.add));
+router.post("/", ctrlWrapper(ctrl.add));
 
-router.put("/:id", ctWr(ctrl.updateById));
+router.put("/:id", ctrlWrapper(ctrl.updateById));
 
-router.patch("/:id/favorite", ctWr(ctrl.updateFavorite));
+router.patch("/:id/favorite", ctrlWrapper(ctrl.updateFavorite));
 
-router.delete("/:id", ctWr(ctrl.removeById));
+router.delete("/:id", ctrlWrapper(ctrl.removeById));
 
 module.exports = router;
