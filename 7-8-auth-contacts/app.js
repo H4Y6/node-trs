@@ -5,12 +5,19 @@ const cors = require("cors");
 
 global.basedir = __dirname;
 
-// const fs = require("fs/promises");
-// const moment = require("moment");
+const fs = require("fs/promises");
 
 const contactsRouter = require("./routes/api/contacts");
+const usersRouter = require("./routes/api/users");
 
 const app = express();
+
+app.use(async (req, res, next) => {
+  const { method, url } = req;
+  const date = new Date().toLocaleString();
+  await fs.appendFile(".server.log", `${method} ${url} ${date}\n`);
+  next();
+});
 
 // app.use(async (req, res, next) => {
 //   const { method, url } = req;
@@ -27,6 +34,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/contacts", contactsRouter);
+app.use("/api/users", usersRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
