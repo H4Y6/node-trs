@@ -5,9 +5,10 @@ const emailRegexp = /^\w+@\w+\.\w{2,3}$/;
 
 const userSchema = new Schema(
   {
-    name: String,
-    email: String,
-    password: String,
+    name: { type: String, required: true },
+    email: { type: String, match: emailRegexp, unique: true, required: true },
+    password: { type: String, minlength: 6, required: true },
+    token: String,
   },
   { versionKey: false, timestamps: true }
 );
