@@ -15,9 +15,9 @@ const bookSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    genre: {
+    genres: {
       type: String,
-      enum: ["fantastic", "love"],
+      enum: ["fantastic", "science", "love"],
       required: true,
     },
     owner: {
@@ -32,7 +32,7 @@ const addSchema = Joi.object({
   title: Joi.string().required(),
   author: Joi.string().required(),
   favorite: Joi.boolean(),
-  genre: Joi.string().valueOf("fantastic", "love").required(),
+  genres: Joi.string().valueOf("fantastic", "science", "love").required(),
 });
 
 const updateFavoriteSchema = Joi.object({
