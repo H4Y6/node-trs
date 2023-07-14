@@ -12,7 +12,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+<<<<<<< HEAD
+    "nodemon": "^2.0.22"
+=======
     "nodemon": "^2.0.13"
+>>>>>>> efe7be899ab64aff4e03b485ee3067f21a76a2e6
   },
   "dependencies": {
     "cors": "^2.8.5",
