@@ -37,6 +37,10 @@ app.post("/api/books", upload.single("cover"), async (req, res) => {
   const newBook = { id: nanoid(), name: req.body.name, cover };
   books.push(newBook);
   res.status(201).json(newBook);
+  try {
+  } catch (error) {
+    await fs.unlink(req.file.path);
+  }
 });
 
 app.listen(3000, () => {
