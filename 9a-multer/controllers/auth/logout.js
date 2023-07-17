@@ -1,5 +1,5 @@
 const { basedir } = global;
-const { User } = require(`${basedir}/models/users`);
+const { User } = require(`${basedir}/models/user`);
 
 const logout = async (req, res) => {
   const { _id } = req.user;
