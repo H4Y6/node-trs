@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const { basedir } = global;
 
-const { User, schemas } = require(`${basedir}/models/users`);
+const { User, schemas } = require(`${basedir}/models/user`);
 const { createError } = require(`${basedir}/helpers`);
 
 const { SECRET_KEY } = process.env;
