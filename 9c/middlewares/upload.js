@@ -1,11 +1,12 @@
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs/promises");
 const { basedir } = global;
 
 const tempDir = path.join(basedir, "temp");
 
 const multerConfig = multer.diskStorage({
-  destinatin: tempDir,
+  destination: tempDir,
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
