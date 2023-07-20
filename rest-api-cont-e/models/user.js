@@ -3,24 +3,28 @@ const Joi = require("joi");
 
 const emailRegExp = /\w+@\w+\.\w/;
 
-const userSchema = Schema({
-  password: {
-    type: String,
-    required: [true, "Set password for user"],
+const userSchema = Schema(
+  {
+    password: {
+      type: String,
+      required: [true, "Set password for user"],
+    },
+    email: {
+      type: String,
+      match: emailRegExp,
+      required: [true, "Email is required"],
+      unique: true,
+    },
+    subscription: {
+      type: String,
+      enum: ["starter", "pro", "business"],
+      default: "starter",
+    },
+    token: String,
+    avatarURL: String,
   },
-  email: {
-    type: String,
-    match: emailRegExp,
-    required: [true, "Email is required"],
-    unique: true,
-  },
-  subscription: {
-    type: String,
-    enum: ["starter", "pro", "business"],
-    default: "starter",
-  },
-  token: String,
-});
+  { versionKey: false, timestamps: true }
+);
 
 const registerSchema = Joi.object({
   password: Joi.string().min(4).required(),
