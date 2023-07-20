@@ -1,4 +1,3 @@
-const multer = require("multer");
 const fs = require("fs/promises");
 const path = require("path");
 const jimp = require("jimp");
