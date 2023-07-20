@@ -1,7 +1,7 @@
 const express = require("express");
 const { basedir } = global;
 const { ctrlWrap } = require(`${basedir}/helpers`);
-const auth = require(`${basedir}/middlewares`);
+const { auth } = require(`${basedir}/middlewares`);
 const ctrl = require(`${basedir}/controllers/contacts`);
 
 const router = express.Router();
