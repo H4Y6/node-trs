@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const Joi = require("joi");
 
 const emailRegexp = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
@@ -13,4 +14,12 @@ const contactSchema = new Schema(
 
 const Contact = model("contacts", contactSchema);
 
-module.exports = Contact;
+const addSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().pattern(emailRegexp).required(),
+  phone: Joi.string().required(),
+});
+
+const schemas = { add: addSchema };
+
+module.exports = { Contact, schemas };
