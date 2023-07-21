@@ -7,7 +7,10 @@ const add = async (req, res) => {
   if (error) {
     throw createError(400, error.message);
   }
-  const result = await Contact.create(req.body);
+  const { id: owner } = req.user;
+
+  const result = await Contact.create({ ...req.body, owner });
+  console.log(result);
   res.status(201).json(result);
 };
 

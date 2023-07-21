@@ -8,7 +8,6 @@ const add = async (req, res) => {
     throw createError(400, error.message);
   }
   const { id: owner } = req.user;
-  console.log(req.user);
   const result = await Book.create({ ...req.body, owner });
   res.status(201).json(result);
 };
