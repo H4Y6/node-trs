@@ -8,6 +8,7 @@ const contactSchema = new Schema(
     name: { type: String, required: true },
     email: { type: String, match: emailRegexp, unique: true, required: true },
     phone: { type: String, required: true },
+    favorite: { type: Boolean, default: false },
   },
   { versionKey: false, timestamps: true }
 );
@@ -18,8 +19,11 @@ const addSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().pattern(emailRegexp).required(),
   phone: Joi.string().required(),
+  favorite: Joi.boolean().default(false),
 });
 
-const schemas = { add: addSchema };
+const updateStatusSchema = Joi.object({ favorite: Joi.boolean().required() });
+
+const schemas = { add: addSchema, updateStatus: updateStatusSchema };
 
 module.exports = { Contact, schemas };
