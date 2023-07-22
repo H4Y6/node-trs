@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-const getTime = () => new Date().toLocaleString();
+const getTime = () => new Date().toISOString();
+// .toLocaleString() ,
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -15,7 +16,7 @@ app.get("/contacts", (req, res) => {
 });
 
 app.get("/time", (req, res) => {
-  res.send(`<h2 class= 'timer'>${getTime()}</h2>`);
+  res.send(`<h2 class= 'timer' style="text-align:center; font-size:34">${getTime()}</h2>`);
 });
 
 app.listen(3000, () => {
