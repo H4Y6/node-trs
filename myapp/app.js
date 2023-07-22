@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-const getTime = () => new Date().toString().slice(0, 25);
+const getTime = () => new Date().toLocaleString();
 
 app.use(express.static(path.join(__dirname, "public")));
 
