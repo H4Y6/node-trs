@@ -23,3 +23,22 @@ true - error 'year must be number'
 */
 
 const isLeapYear = require("./isLeapYear");
+
+describe("test isLeapYear function", () => {
+  test("2008 - true", () => {
+    const result = isLeapYear(2008);
+    expect(result).toBe(true); // result === true
+  });
+
+  test("2003 - false", () => {
+    expect(isLeapYear(2003)).toBe(false);
+  });
+
+  it("1900 - false", () => {
+    expect(isLeapYear(1900)).toBe(false);
+  });
+
+  it("2000 - true", () => {
+    expect(isLeapYear(2000)).toBe(true);
+  });
+});
