@@ -12,7 +12,7 @@
 
 41 - error 'year must be 42 or more'
 2008.4 - error 'year must be integer'
-() - error 'year must be exist'
+() - error 'year must exist'
 '2008' - error 'year must be number'
 null - error 'year must be number'
 false - error 'year must be number'
@@ -51,7 +51,7 @@ true - error 'year must be number'
 //     })
 
 //     test("() - error 'year must be exist'", ()=> {
-//         expect(()=> isLeapYear()).toThrow('year must be exist');
+//         expect(()=> isLeapYear()).toThrow('year must exist');
 //     });
 
 //     test("'2008' - error 'year must be number'", ()=> {
