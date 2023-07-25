@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node index",
-    "start:dev": "index app"
+    "start:dev": "nodemon index"
   },
   "keywords": [],
   "author": "",
